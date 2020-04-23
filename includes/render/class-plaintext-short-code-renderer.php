@@ -8,28 +8,22 @@ defined( 'ABSPATH' ) || exit;
 class PlaintextShortCodeRenderer extends AbstractRenderer {
 
 	/**
+	 * Register the short code with WordPress
+	 */
+	public function register() {
+		add_shortcode( static::to_short_code_name( $this->code_name ), array(
+			$this,
+			'get_short_code_business_profile'
+		) );
+	}
+
+	/**
 	 * @param $code_name - the name of this datum
 	 *
 	 * @return string - the code name with underscores replaced by hyphens
 	 */
 	public static function to_short_code_name( $code_name ) {
 		return str_replace( "_", "-", $code_name );
-	}
-
-	/**
-	 * @param $code_name - the name of this datum
-	 *
-	 * @return string - the short code ("company_name" becomes "[company-name]")
-	 */
-	public static function full_short_code( $code_name ) {
-		return '[' . static::to_short_code_name( $code_name ) . ']';
-	}
-
-	/**
-	 * Register the short code with WordPress
-	 */
-	public function register() {
-		add_shortcode( static::to_short_code_name( $this->code_name ), array( $this, 'get_short_code_business_profile' ) );
 	}
 
 	/**
@@ -47,5 +41,14 @@ class PlaintextShortCodeRenderer extends AbstractRenderer {
 		}
 
 		return esc_attr( $this->value );
+	}
+
+	/**
+	 * @param $code_name - the name of this datum
+	 *
+	 * @return string - the short code ("company_name" becomes "[company-name]")
+	 */
+	public static function full_short_code( $code_name ) {
+		return '[' . static::to_short_code_name( $code_name ) . ']';
 	}
 }

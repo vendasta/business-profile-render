@@ -27,9 +27,10 @@ define( 'BUSINESS_PROFILE_RENDER_PLUGIN', plugin_basename( __FILE__ ) );
 require_once 'includes/class-business-profile-render-controller.php';
 
 function business_profile_render_plugin() {
-    $instance = BusinessProfileRenderController::instance();
-    $instance->register_hooks();
-    return $instance;
+	$instance = BusinessProfileRenderController::instance();
+	$instance->register_hooks();
+
+	return $instance;
 }
 
 business_profile_render_plugin();

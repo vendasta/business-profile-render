@@ -8,22 +8,6 @@ defined( 'ABSPATH' ) || exit;
 class AbstractReusableBlockRenderer extends AbstractRenderer {
 
 	/**
-	 * @return string - the content of the block
-	 * @throws Exception - when not overridden in child class
-	 */
-	protected function block_content() {
-		throw new Exception( "unimplemented" );
-	}
-
-	/**
-	 * @return string - the name of the block
-	 * @throws Exception - when not overridden in child class
-	 */
-	protected function get_title() {
-		throw new Exception( "unimplemented" );
-	}
-
-	/**
 	 * Create the WP-Block style "post"
 	 */
 	public function register() {
@@ -55,5 +39,21 @@ class AbstractReusableBlockRenderer extends AbstractRenderer {
 				)
 			) );
 		}
+	}
+
+	/**
+	 * @return string - the name of the block
+	 * @throws Exception - when not overridden in child class
+	 */
+	protected function get_title() {
+		throw new Exception( "unimplemented" );
+	}
+
+	/**
+	 * @return string - the content of the block
+	 * @throws Exception - when not overridden in child class
+	 */
+	protected function block_content() {
+		throw new Exception( "unimplemented" );
 	}
 }

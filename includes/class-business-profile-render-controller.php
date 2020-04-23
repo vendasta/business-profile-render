@@ -36,10 +36,10 @@ class BusinessProfileRenderController {
 	 * BusinessProfileRenderController constructor.
 	 */
 	public function __construct() {
-		$this->storage = BusinessDataStorage::instance();
-		$this->registered = false;
+		$this->storage        = BusinessDataStorage::instance();
+		$this->registered     = false;
 		$this->profile_fields = array(
-			new CompanyName($this->storage),
+			new CompanyName( $this->storage ),
 			// TODO: add all the other business data classes and put them here
 		);
 	}
