@@ -16,7 +16,7 @@ class BusinessProfileRenderController {
 	/**
 	 * @var BusinessProfileRenderController the instance of this class
 	 */
-	private static $_singleton = null;
+	private static $singleton = null;
 
 	/**
 	 * @var BusinessDataStorage provides the interface to the data storage
@@ -51,11 +51,11 @@ class BusinessProfileRenderController {
 	 * @return BusinessProfileRenderController
 	 */
 	public static function instance() {
-		if ( is_null( self::$_singleton ) ) {
-			self::$_singleton = new self();
+		if ( is_null( self::$singleton ) ) {
+			self::$singleton = new self();
 		}
 
-		return self::$_singleton;
+		return self::$singleton;
 	}
 
 	/**

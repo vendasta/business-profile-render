@@ -84,7 +84,7 @@ class BusinessDataStorage {
 	/**
 	 * @var null|BusinessDataStorage - the constructed instance of this class
 	 */
-	private static $_singleton = null;
+	private static $singleton = null;
 	/**
 	 * @var null|array - the structured data representing the business profile as loaded from the WordPress option
 	 */
@@ -98,12 +98,12 @@ class BusinessDataStorage {
 	 * @return BusinessDataStorage the constructed instance of this class
 	 */
 	public static function instance() {
-		if ( is_null( self::$_singleton ) ) {
-			self::$_singleton = new self();
-			self::$_singleton->load_data();
+		if ( is_null( self::$singleton ) ) {
+			self::$singleton = new self();
+			self::$singleton->load_data();
 		}
 
-		return self::$_singleton;
+		return self::$singleton;
 	}
 
 	/**
@@ -112,20 +112,14 @@ class BusinessDataStorage {
 	protected function load_data() {
 		$this->_business_profile_found = false;
 		$this->business_profile_array  = null;
-		$encoded_data                  = get_option( $this::OPTION_STORAGE_NAME );
+		$option                        = get_option( $this::OPTION_STORAGE_NAME );
 
-		if ( ! $encoded_data || $encoded_data == null || $encoded_data == "" || $encoded_data == "{}" ) {
+		if ( ! $option || sizeof( $option ) == 0 ) {
 			error_log( BUSINESS_PROFILE_RENDER_NAME . " Version " . BUSINESS_PROFILE_RENDER_VERSION .
 			           " found no data in option " . $this::OPTION_STORAGE_NAME );
 		} else {
 			$this->_business_profile_found = true;
-			$data                          = json_decode( $encoded_data );
-			if ( is_object( $data ) || is_array( $data ) ) {
-				$this->business_profile_array = $data;
-			} else {
-				error_log( BUSINESS_PROFILE_RENDER_NAME . " Version " . BUSINESS_PROFILE_RENDER_VERSION .
-				           " cannot parse option " . $this::OPTION_STORAGE_NAME . ": $encoded_data" );
-			}
+			$this->business_profile_array  = $option;
 		}
 	}
 
