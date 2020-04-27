@@ -8,19 +8,19 @@ require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'render/class-paragraph-reu
 /**
  * Class CompanyName holds and displays the name of the company
  */
-class CompanyName extends AbstractBusinessProfileField {
+class CompanyName extends BusinessProfileField {
 
 	/**
 	 * @return  string the name of the datum containing relevant data
 	 */
-	protected static function profile_option_name() {
+	protected static function profile_option_name(): string {
 		return "company_name";
 	}
 
 	/**
 	 * @return  string the name of this datum as read by a person
 	 */
-	protected static function readable_profile_option() {
+	protected static function readable_profile_option(): string {
 		return "Company Name";
 	}
 
@@ -30,7 +30,7 @@ class CompanyName extends AbstractBusinessProfileField {
 	 * @param string $value - the value to render
 	 * @param boolean $profile_data_exists - true if the business profile data was set
 	 *
-	 * @return AbstractRenderer[] - renderers to run during init - extend to include reusable block
+	 * @return Renderer[] - renderers to run during init - extend to include reusable block
 	 * @throws Exception
 	 */
 	protected function construct_renderers( $code_name, $readable_name, $value, $profile_data_exists ) {

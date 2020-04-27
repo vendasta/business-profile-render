@@ -6,12 +6,12 @@ require_once( 'class-abstract-renderer.php' );
 /**
  * Class PlaintextShortCodeRenderer - Register the short code that can be inserted to render the datum
  */
-class PlaintextShortCodeRenderer extends AbstractRenderer {
+class PlaintextShortCodeRenderer extends Renderer {
 
 	/**
 	 * Register the short code with WordPress
 	 */
-	public function register() {
+	public function register(): void {
 		add_shortcode( static::to_short_code_name( $this->code_name ), array(
 			$this,
 			'get_short_code_business_profile'

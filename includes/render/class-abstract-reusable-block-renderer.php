@@ -5,14 +5,14 @@ require_once( 'class-abstract-renderer.php' );
 
 
 /**
- * Class AbstractReusableBlockRenderer - Register a reusable block for the new block-editor that provides the short-code
+ * Class ReusableBlockRenderer - Register a reusable block for the new block-editor that provides the short-code
  */
-class AbstractReusableBlockRenderer extends AbstractRenderer {
+abstract class ReusableBlockRenderer extends Renderer {
 
 	/**
 	 * Create the WP-Block style "post"
 	 */
-	public function register() {
+	public function register(): void {
 		$title = $this->get_title();
 
 		$reusable_block = get_posts( array(
@@ -45,17 +45,11 @@ class AbstractReusableBlockRenderer extends AbstractRenderer {
 
 	/**
 	 * @return string - the name of the block
-	 * @throws Exception - when not overridden in child class
 	 */
-	protected function get_title() {
-		throw new Exception( "unimplemented" );
-	}
+	abstract protected function get_title(): string;
 
 	/**
 	 * @return string - the content of the block
-	 * @throws Exception - when not overridden in child class
 	 */
-	protected function block_content() {
-		throw new Exception( "unimplemented" );
-	}
+	abstract protected function block_content(): string;
 }

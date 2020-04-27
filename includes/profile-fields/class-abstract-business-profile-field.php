@@ -6,15 +6,15 @@ require( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'render/class-plaintext-short-co
 
 
 /**
- * Class AbstractBusinessProfileField
+ * Class BusinessProfileField
  *
  * Provides the basic structure to register the settings/short codes/reusable blocks
  * Inherit from this class and override the unimplemented static methods
  */
-class AbstractBusinessProfileField {
+abstract class BusinessProfileField {
 
 	/**
-	 * @var AbstractRenderer[] - register during init
+	 * @var Renderer[] - register during init
 	 */
 	protected $renderers;
 
@@ -28,7 +28,7 @@ class AbstractBusinessProfileField {
 	 * @throws Exception - when the abstract methods have not been overridden
 	 */
 	public function __construct( $storage ) {
-		$profile_data_exists = $storage->business_profile_found();
+		$profile_data_exists = $storage->has_data();
 		$value               = $storage->get( static::profile_option_name() );
 		$this->renderers     = $this->construct_renderers( static::profile_option_name(), static::readable_profile_option(), $value, $profile_data_exists );
 		add_action( 'init', array( $this, 'register' ) );
@@ -36,11 +36,8 @@ class AbstractBusinessProfileField {
 
 	/**
 	 * @return string the name of the datum containing relevant data
-	 * @throws Exception - when unimplemented
 	 */
-	protected static function profile_option_name() {
-		throw new Exception( "unimplemented" );
-	}
+	abstract protected static function profile_option_name(): string;
 
 	/**
 	 * @param string $code_name - the name of the datum to register
@@ -48,7 +45,7 @@ class AbstractBusinessProfileField {
 	 * @param string $value - the value to render
 	 * @param boolean $profile_data_exists - true if the business profile data was set
 	 *
-	 * @return AbstractRenderer[] - the renderers that need to run while initializing WP in general
+	 * @return Renderer[] - the renderers that need to run while initializing WP in general
 	 * @throws Exception
 	 */
 	protected function construct_renderers( $code_name, $readable_name, $value, $profile_data_exists ) {
@@ -59,11 +56,8 @@ class AbstractBusinessProfileField {
 
 	/**
 	 * @return string the name of this datum as read by a person
-	 * @throws Exception - when unimplemented
 	 */
-	protected static function readable_profile_option() {
-		throw new Exception( "unimplemented" );
-	}
+	abstract protected static function readable_profile_option(): string;
 
 	/**
 	 * register each regular renderer

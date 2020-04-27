@@ -6,14 +6,14 @@ require_once( 'class-abstract-reusable-block-renderer.php' );
 /**
  * Class ParagraphReusableBlockRenderer - this is mostly an example that should be replaced
  */
-class ParagraphReusableBlockRenderer extends AbstractReusableBlockRenderer {
+class ParagraphReusableBlockRenderer extends ReusableBlockRenderer {
 
 	/**
 	 * return the content of the reusable block
 	 *
 	 * @return string - the content of the block
 	 */
-	protected function block_content() {
+	protected function block_content(): string {
 		return '<!-- wp:paragraph -->
 ' . $this->value . '
 <!-- /wp:paragraph -->';
@@ -22,7 +22,7 @@ class ParagraphReusableBlockRenderer extends AbstractReusableBlockRenderer {
 	/**
 	 * @return string - the name of the block
 	 */
-	protected function get_title() {
+	protected function get_title(): string {
 		return sanitize_title( 'paragraph ' . $this->readable_name );
 	}
 }

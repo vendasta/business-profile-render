@@ -4,9 +4,9 @@ defined( 'ABSPATH' ) || exit;
 
 
 /**
- * Class AbstractRenderer - Extend this class to register different aspects of a business datum
+ * Class Renderer - Extend this class to register different aspects of a business datum
  */
-class AbstractRenderer {
+abstract class Renderer {
 
 	/**
 	 * @var string the name of the option field (like "company_name")
@@ -47,9 +47,6 @@ class AbstractRenderer {
 	/**
 	 * perform the registration
 	 *
-	 * @throws Exception - when not overridden, this is an abstract class
 	 */
-	public function register() {
-		throw new Exception( get_class( $this ) . "->register: not implemented" );
-	}
+	abstract public function register(): void;
 }

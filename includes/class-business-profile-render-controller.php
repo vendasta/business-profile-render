@@ -24,12 +24,12 @@ class BusinessProfileRenderController {
 	private $storage = null;
 
 	/**
-	 * @var array|AbstractBusinessProfileField[]
+	 * @var array|BusinessProfileField[]
 	 */
 	private $profile_fields;
 
 	/**
-	 * @var boolean
+	 * @var bool
 	 */
 	private $registered;
 

@@ -92,7 +92,7 @@ class BusinessDataStorage {
 	/**
 	 * @var bool - set to true if the business profile data was set in the WordPress option
 	 */
-	private $_business_profile_found = false;
+	private $business_profile_found = false;
 
 	/**
 	 * @return BusinessDataStorage the constructed instance of this class
@@ -110,16 +110,16 @@ class BusinessDataStorage {
 	 * get the value from the WordPress option, perform some validation and set it on this instance
 	 */
 	protected function load_data() {
-		$this->_business_profile_found = false;
-		$this->business_profile_array  = null;
-		$option                        = get_option( $this::OPTION_STORAGE_NAME );
+		$this->business_profile_found = false;
+		$this->business_profile_array = null;
+		$option                       = get_option( $this::OPTION_STORAGE_NAME );
 
 		if ( ! $option || sizeof( $option ) == 0 ) {
 			error_log( BUSINESS_PROFILE_RENDER_NAME . " Version " . BUSINESS_PROFILE_RENDER_VERSION .
 			           " found no data in option " . $this::OPTION_STORAGE_NAME );
 		} else {
-			$this->_business_profile_found = true;
-			$this->business_profile_array  = $option;
+			$this->business_profile_found = true;
+			$this->business_profile_array = $option;
 		}
 	}
 
@@ -137,9 +137,9 @@ class BusinessDataStorage {
 	}
 
 	/**
-	 * @return boolean - returns true if the option was saved
+	 * @return bool - returns true if the option was saved
 	 */
-	public function business_profile_found() {
-		return $this->_business_profile_found;
+	public function has_data(): bool {
+		return $this->business_profile_found;
 	}
 }
