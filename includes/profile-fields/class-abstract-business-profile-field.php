@@ -1,5 +1,8 @@
 <?php
+
+
 defined( 'ABSPATH' ) || exit;
+require( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'render/class-plaintext-short-code-renderer.php' );
 
 
 /**

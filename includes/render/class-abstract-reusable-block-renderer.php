@@ -1,5 +1,8 @@
 <?php
+
+
 defined( 'ABSPATH' ) || exit;
+require_once( 'class-abstract-renderer.php' );
 
 
 /**

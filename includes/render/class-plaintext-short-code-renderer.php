@@ -1,6 +1,8 @@
 <?php
-defined( 'ABSPATH' ) || exit;
 
+
+defined( 'ABSPATH' ) || exit;
+require_once( 'class-abstract-renderer.php' );
 
 /**
  * Class PlaintextShortCodeRenderer - Register the short code that can be inserted to render the datum

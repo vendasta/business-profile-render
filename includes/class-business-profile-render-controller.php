@@ -1,7 +1,9 @@
 <?php
-defined( 'ABSPATH' ) || exit;
 
-require_once 'profile-fields/class-company-name.php';
+
+defined( 'ABSPATH' ) || exit;
+require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'class-business-profile-storage.php' );
+require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-company-name.php' );
 
 /**
  * Class BusinessProfileRenderController

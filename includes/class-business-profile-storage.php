@@ -1,8 +1,10 @@
 <?php
+
+
 defined( 'ABSPATH' ) || exit;
 
 
-$example_json_string = `{
+$example_json_string = '{
 	"company_name": "nTest",
 	"description": "This is testing the loooong description",
 	"short_description": null,
@@ -66,7 +68,7 @@ $example_json_string = `{
 	"instagram_url": null,
 	"pinterest_url": null,
 	"linkedin_url": null
-}`;
+}';
 
 /**
  * Class BusinessDataStorage

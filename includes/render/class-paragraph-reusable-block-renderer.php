@@ -1,6 +1,8 @@
 <?php
-defined( 'ABSPATH' ) || exit;
 
+
+defined( 'ABSPATH' ) || exit;
+require_once( 'class-abstract-reusable-block-renderer.php' );
 
 /**
  * Class ParagraphReusableBlockRenderer - this is mostly an example that should be replaced
