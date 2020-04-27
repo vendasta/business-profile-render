@@ -3,7 +3,7 @@
 
 defined( 'ABSPATH' ) || exit;
 require_once( 'class-abstract-business-profile-field.php' );
-require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'render/class-paragraph-reusable-block-renderer.php' );
+require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'render/class-plaintext-reusable-block-renderer.php' );
 
 /**
  * Class CompanyName holds and displays the name of the company
@@ -35,7 +35,7 @@ class CompanyName extends BusinessProfileField {
 	protected function construct_renderers( $code_name, $readable_name, $value ) {
 		$parent_renderers = parent::construct_renderers( $code_name, $readable_name, $value );
 		array_push( $parent_renderers,
-			new ParagraphReusableBlockRenderer( $code_name, $readable_name, $value )
+			new PlaintextReusableBlockRenderer( $code_name, $readable_name, $value )
 		);
 
 		return $parent_renderers;

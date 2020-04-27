@@ -9,7 +9,7 @@ require_once( 'class-abstract-renderer.php' );
 class PlaintextShortCodeRenderer extends Renderer {
 
 	/**
-	 * @var string the name of the shortcode (like "company-name")
+	 * @var string the name of the shortcode (like "company-name" )
 	 */
 	protected $short_code_name;
 

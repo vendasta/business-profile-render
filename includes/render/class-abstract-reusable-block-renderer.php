@@ -44,7 +44,7 @@ abstract class ReusableBlockRenderer extends Renderer {
 	}
 
 	/**
-	 * @return string - the name of the block
+	 * @return string - the name of the block - a change to this would be a breaking change
 	 */
 	abstract protected function get_title(): string;
 
