@@ -1,6 +1,5 @@
 <?php
 
-
 defined( 'ABSPATH' ) || exit;
 
 
@@ -80,7 +79,7 @@ class BusinessDataStorage {
 	/**
 	 * This is the name of the WordPress option that holds the encoded business profile data
 	 */
-	const OPTION_STORAGE_NAME = BUSINESS_PROFILE_RENDER_NAMESPACE . '_business_profile';
+	const OPTION_STORAGE_NAME = 'bpr_business_profile';
 
 	/**
 	 * @var null|BusinessDataStorage - the constructed instance of this class
@@ -111,10 +110,11 @@ class BusinessDataStorage {
 	 * get the value from the WordPress option, perform some validation and set it on this instance
 	 */
 	protected function load_data() {
-		$encoded_data = get_option( $this::OPTION_STORAGE_NAME );
-		if ( $encoded_data == null || $encoded_data == "" || $encoded_data == "{}" ) {
-			$this->_business_profile_found = false;
-			$this->business_profile_array  = null;
+		$this->_business_profile_found = false;
+		$this->business_profile_array  = null;
+		$encoded_data                  = get_option( $this::OPTION_STORAGE_NAME );
+
+		if ( ! $encoded_data || $encoded_data == null || $encoded_data == "" || $encoded_data == "{}" ) {
 			error_log( BUSINESS_PROFILE_RENDER_NAME . " Version " . BUSINESS_PROFILE_RENDER_VERSION .
 			           " found no data in option " . $this::OPTION_STORAGE_NAME );
 		} else {
@@ -122,9 +122,10 @@ class BusinessDataStorage {
 			$data                          = json_decode( $encoded_data );
 			if ( is_object( $data ) || is_array( $data ) ) {
 				$this->business_profile_array = $data;
+			} else {
+				error_log( BUSINESS_PROFILE_RENDER_NAME . " Version " . BUSINESS_PROFILE_RENDER_VERSION .
+				           " cannot parse option " . $this::OPTION_STORAGE_NAME . ": $encoded_data" );
 			}
-			error_log( BUSINESS_PROFILE_RENDER_NAME . " Version " . BUSINESS_PROFILE_RENDER_VERSION .
-			           " cannot parse option " . $this::OPTION_STORAGE_NAME . ": $encoded_data" );
 		}
 	}
 

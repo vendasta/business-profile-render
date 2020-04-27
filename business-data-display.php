@@ -12,15 +12,12 @@
  * Domain Path:
  */
 
-
 defined( 'ABSPATH' ) || exit;
-
 require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
 $plugin_data = get_plugin_data( __FILE__ );
 define( 'BUSINESS_PROFILE_RENDER_VERSION', $plugin_data['Version'] );
 define( 'BUSINESS_PROFILE_RENDER_NAME', $plugin_data['Name'] );
-define( 'BUSINESS_PROFILE_RENDER_NAMESPACE', 'bpr' );
 define( 'BUSINESS_PROFILE_RENDER_FILE', __FILE__ );
 define( 'BUSINESS_PROFILE_RENDER_PATH', plugin_dir_path( __FILE__ ) );
 define( 'BUSINESS_PROFILE_RENDER_INCLUDE_PATH', BUSINESS_PROFILE_RENDER_PATH . 'includes/' );

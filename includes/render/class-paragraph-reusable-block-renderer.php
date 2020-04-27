@@ -1,6 +1,5 @@
 <?php
 
-
 defined( 'ABSPATH' ) || exit;
 require_once( 'class-abstract-reusable-block-renderer.php' );
 
