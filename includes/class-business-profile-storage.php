@@ -89,10 +89,6 @@ class BusinessDataStorage {
 	 * @var null|array - the structured data representing the business profile as loaded from the WordPress option
 	 */
 	private $business_profile_array = null;
-	/**
-	 * @var bool - set to true if the business profile data was set in the WordPress option
-	 */
-	private $business_profile_found = false;
 
 	/**
 	 * @return BusinessDataStorage the constructed instance of this class
@@ -110,15 +106,13 @@ class BusinessDataStorage {
 	 * get the value from the WordPress option, perform some validation and set it on this instance
 	 */
 	protected function load_data() {
-		$this->business_profile_found = false;
 		$this->business_profile_array = null;
 		$option                       = get_option( $this::OPTION_STORAGE_NAME );
 
-		if ( ! $option || sizeof( $option ) == 0 ) {
+		if ( ! $option || empty( $option ) ) {
 			error_log( BUSINESS_PROFILE_RENDER_NAME . " Version " . BUSINESS_PROFILE_RENDER_VERSION .
 			           " found no data in option " . $this::OPTION_STORAGE_NAME );
 		} else {
-			$this->business_profile_found = true;
 			$this->business_profile_array = $option;
 		}
 	}
@@ -126,20 +120,17 @@ class BusinessDataStorage {
 	/**
 	 * @param string $property_name - name of the field in the business profile array (like "company_name")
 	 *
-	 * @return mixed|null - the value stored in the structured option data like ("Alphabet Inc.")
+	 * @return string|null - the value stored in the structured option data like ("Alphabet Inc.")
 	 */
 	public function get( $property_name ) {
+		if ( is_null( $this->business_profile_array ) ) {
+			return null;
+		}
+
 		if ( isset( $this->business_profile_array[ $property_name ] ) ) {
 			return $this->business_profile_array[ $property_name ];
 		}
 
-		return null;
-	}
-
-	/**
-	 * @return bool - returns true if the option was saved
-	 */
-	public function has_data(): bool {
-		return $this->business_profile_found;
+		return "";
 	}
 }

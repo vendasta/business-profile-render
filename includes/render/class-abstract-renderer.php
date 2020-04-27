@@ -28,17 +28,14 @@ abstract class Renderer {
 	 *
 	 * @param string $code_name - the name of the datum to register
 	 * @param string $readable_name - the name of this datum as read by a person
-	 * @param string $value - the value to render
-	 * @param boolean $profile_data_exists - true if the entire business profile option is set
+	 * @param string|null $value - the value to render
 	 */
-	public function __construct( $code_name, $readable_name, $value, $profile_data_exists ) {
+	public function __construct( $code_name, $readable_name, $value ) {
 		$this->code_name     = $code_name;
 		$this->readable_name = $readable_name;
 
-		if ( ! $profile_data_exists ) {
+		if ( is_null($value) ) {
 			$this->value = "PlaceHolder " . $this->readable_name;
-		} elseif ( $value == null ) {
-			$this->value = "";
 		} else {
 			$this->value = $value;
 		}

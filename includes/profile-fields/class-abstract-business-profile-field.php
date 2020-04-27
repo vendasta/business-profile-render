@@ -28,9 +28,8 @@ abstract class BusinessProfileField {
 	 * @throws Exception - when the abstract methods have not been overridden
 	 */
 	public function __construct( $storage ) {
-		$profile_data_exists = $storage->has_data();
-		$value               = $storage->get( static::profile_option_name() );
-		$this->renderers     = $this->construct_renderers( static::profile_option_name(), static::readable_profile_option(), $value, $profile_data_exists );
+		$value           = $storage->get( static::profile_option_name() );
+		$this->renderers = $this->construct_renderers( static::profile_option_name(), static::readable_profile_option(), $value );
 		add_action( 'init', array( $this, 'register' ) );
 	}
 
@@ -42,15 +41,14 @@ abstract class BusinessProfileField {
 	/**
 	 * @param string $code_name - the name of the datum to register
 	 * @param string $readable_name - the name of this datum as read by a person
-	 * @param string $value - the value to render
-	 * @param boolean $profile_data_exists - true if the business profile data was set
+	 * @param string|null $value - the value to render
 	 *
 	 * @return Renderer[] - the renderers that need to run while initializing WP in general
 	 * @throws Exception
 	 */
-	protected function construct_renderers( $code_name, $readable_name, $value, $profile_data_exists ) {
+	protected function construct_renderers( $code_name, $readable_name, $value ) {
 		return array(
-			new PlaintextShortCodeRenderer( $code_name, $readable_name, $value, $profile_data_exists ),
+			new PlaintextShortCodeRenderer( $code_name, $readable_name, $value ),
 		);
 	}
 

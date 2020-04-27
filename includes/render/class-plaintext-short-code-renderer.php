@@ -9,22 +9,23 @@ require_once( 'class-abstract-renderer.php' );
 class PlaintextShortCodeRenderer extends Renderer {
 
 	/**
-	 * Register the short code with WordPress
+	 * @var string the name of the shortcode (like "company-name")
 	 */
-	public function register(): void {
-		add_shortcode( static::to_short_code_name( $this->code_name ), array(
-			$this,
-			'get_short_code_business_profile'
-		) );
+	protected $short_code_name;
+
+	public function __construct( $code_name, $readable_name, $value ) {
+		parent::__construct( $code_name, $readable_name, $value );
+		$this->short_code_name = str_replace( "_", "-", $code_name );
 	}
 
 	/**
-	 * @param $code_name - the name of this datum
-	 *
-	 * @return string - the code name with underscores replaced by hyphens
+	 * Register the short code with WordPress
 	 */
-	public static function to_short_code_name( $code_name ) {
-		return str_replace( "_", "-", $code_name );
+	public function register(): void {
+		add_shortcode( $this->short_code_name, array(
+			$this,
+			'get_short_code_business_profile'
+		) );
 	}
 
 	/**
@@ -38,18 +39,9 @@ class PlaintextShortCodeRenderer extends Renderer {
 	 */
 	public function get_short_code_business_profile( $atts, $content = null, $code = '' ) {
 		if ( is_feed() ) {
-			return static::full_short_code( $this->code_name );
+			return '[' . $this->short_code_name . ']';
 		}
 
 		return esc_attr( $this->value );
-	}
-
-	/**
-	 * @param $code_name - the name of this datum
-	 *
-	 * @return string - the short code ("company_name" becomes "[company-name]")
-	 */
-	public static function full_short_code( $code_name ) {
-		return '[' . static::to_short_code_name( $code_name ) . ']';
 	}
 }
