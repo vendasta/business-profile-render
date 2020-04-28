@@ -109,7 +109,7 @@ class BusinessDataStorage {
 		$this->business_profile_array = null;
 		$option                       = get_option( $this::OPTION_STORAGE_NAME );
 
-		if ( ! $option || empty( $option ) ) {
+		if (empty( $option ) ) {
 			error_log( BUSINESS_PROFILE_RENDER_NAME . " Version " . BUSINESS_PROFILE_RENDER_VERSION .
 			           " found no data in option " . $this::OPTION_STORAGE_NAME );
 		} else {
