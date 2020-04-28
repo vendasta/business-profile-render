@@ -15,7 +15,7 @@ class PlaintextShortCodeRenderer extends Renderer {
 
 	public function __construct( $code_name, $readable_name, $value ) {
 		parent::__construct( $code_name, $readable_name, $value );
-		$this->short_code_name = str_replace( "_", "-", $code_name );
+		$this->short_code_name = sanitize_title( BUSINESS_PROFILE_RENDER_NAME . ' ' . $readable_name );
 	}
 
 	/**

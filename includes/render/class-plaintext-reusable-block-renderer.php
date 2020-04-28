@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) || exit;
 require_once( 'class-abstract-reusable-block-renderer.php' );
 
 /**
- * Class PlaintextReusableBlockRenderer - this is mostly an example that should be replaced
+ * Class PlainTextReusableBlockRenderer - this is mostly an example that should be replaced
  */
 class PlaintextReusableBlockRenderer extends ReusableBlockRenderer {
 
@@ -14,13 +14,15 @@ class PlaintextReusableBlockRenderer extends ReusableBlockRenderer {
 	 * @return string - the content of the block
 	 */
 	protected function block_content(): string {
-		return $this->value;
+		return '<!-- wp:paragraph -->
+' . $this->value . '
+<!-- /wp:paragraph -->';
 	}
 
 	/**
-	 * @return string - the name of the block - a change to this would be a breaking change
+	 * @return string - the name of the block
 	 */
 	protected function get_title(): string {
-		return sanitize_title( $this->readable_name . ' Plaintext Block');
+		return sanitize_title( BUSINESS_PROFILE_RENDER_NAME . ' ' . $this->readable_name . ' Plaintext Block');
 	}
 }
