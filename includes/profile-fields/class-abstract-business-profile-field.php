@@ -49,6 +49,7 @@ abstract class BusinessProfileField {
 	protected function construct_renderers( $code_name, $readable_name, $value ) {
 		return array(
 			new PlaintextShortCodeRenderer( $code_name, $readable_name, $value ),
+			new PlaintextReusableBlockRenderer( $code_name, $readable_name, $value )
 		);
 	}
 
