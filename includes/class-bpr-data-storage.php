@@ -70,11 +70,11 @@ $example_json_string = '{
 }';
 
 /**
- * Class BusinessDataStorage
+ * Class BPR_DataStorage
  *
  * Loads the business profile data from the option
  */
-class BusinessDataStorage {
+class BPR_DataStorage {
 
 	/**
 	 * This is the name of the WordPress option that holds the encoded business profile data
@@ -82,7 +82,7 @@ class BusinessDataStorage {
 	const OPTION_STORAGE_NAME = 'bpr_business_profile';
 
 	/**
-	 * @var null|BusinessDataStorage - the constructed instance of this class
+	 * @var null|BPR_DataStorage - the constructed instance of this class
 	 */
 	private static $singleton = null;
 	/**
@@ -91,7 +91,7 @@ class BusinessDataStorage {
 	private $business_profile_array = null;
 
 	/**
-	 * @return BusinessDataStorage the constructed instance of this class
+	 * @return BPR_DataStorage the constructed instance of this class
 	 */
 	public static function instance() {
 		if ( is_null( self::$singleton ) ) {
@@ -109,7 +109,7 @@ class BusinessDataStorage {
 		$this->business_profile_array = null;
 		$option                       = get_option( $this::OPTION_STORAGE_NAME );
 
-		if (empty( $option ) ) {
+		if ( empty( $option ) ) {
 			error_log( BUSINESS_PROFILE_RENDER_NAME . " Version " . BUSINESS_PROFILE_RENDER_VERSION .
 			           " found no data in option " . $this::OPTION_STORAGE_NAME );
 		} else {

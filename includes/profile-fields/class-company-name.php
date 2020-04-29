@@ -2,13 +2,12 @@
 
 
 defined( 'ABSPATH' ) || exit;
-require_once( 'class-abstract-business-profile-field.php' );
-require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'render/class-plaintext-reusable-block-renderer.php' );
+require_once( 'class-bpr-field.php' );
 
 /**
- * Class CompanyName holds and displays the name of the company
+ * Class BPR_CompanyName holds and displays the name of the company
  */
-class CompanyName extends BusinessProfileField {
+class BPR_CompanyName extends BPR_Field {
 
 	/**
 	 * @return  string the name of the datum containing relevant data

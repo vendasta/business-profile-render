@@ -4,9 +4,9 @@ defined( 'ABSPATH' ) || exit;
 
 
 /**
- * Class Renderer - Extend this class to register different aspects of a business datum
+ * Class BPR_Renderer - Extend this class to register different aspects of a business datum
  */
-abstract class Renderer {
+abstract class BPR_Renderer {
 
 	/**
 	 * @var string the name of the option field (like "company_name")
@@ -34,7 +34,7 @@ abstract class Renderer {
 		$this->code_name     = $code_name;
 		$this->readable_name = $readable_name;
 
-		if ( is_null($value) ) {
+		if ( is_null( $value ) ) {
 			$this->value = "PlaceHolder " . $this->readable_name;
 		} else {
 			$this->value = $value;

@@ -24,10 +24,10 @@ define( 'BUSINESS_PROFILE_RENDER_PATH', plugin_dir_path( BUSINESS_PROFILE_RENDER
 define( 'BUSINESS_PROFILE_RENDER_INCLUDE_PATH', BUSINESS_PROFILE_RENDER_PATH . 'includes/' );
 
 // Must come after constant definitions
-require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'class-business-profile-render-controller.php' );
+require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'class-bpr-controller.php' );
 
 function business_profile_render_plugin() {
-	$instance = BusinessProfileRenderController::instance();
+	$instance = BPR_Controller::instance();
 	$instance->register_hooks();
 
 	return $instance;

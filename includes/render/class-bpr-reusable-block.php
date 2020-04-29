@@ -1,13 +1,13 @@
 <?php
 
 defined( 'ABSPATH' ) || exit;
-require_once( 'class-abstract-renderer.php' );
+require_once( 'class-bpr-renderer.php' );
 
 
 /**
- * Class ReusableBlockRenderer - Register a reusable block for the new block-editor that provides the short-code
+ * Class BPR_ReusableBlock - Register a reusable block for the new block-editor that provides the short-code
  */
-abstract class ReusableBlockRenderer extends Renderer {
+abstract class BPR_ReusableBlock extends BPR_Renderer {
 
 	/**
 	 * Create the WP-Block style "post"

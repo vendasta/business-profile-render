@@ -1,12 +1,12 @@
 <?php
 
 defined( 'ABSPATH' ) || exit;
-require_once( 'class-abstract-renderer.php' );
+require_once( 'class-bpr-renderer.php' );
 
 /**
- * Class PlaintextShortCodeRenderer - Register the short code that can be inserted to render the datum
+ * Class BPR_PlaintextShortCode - Register the short code that can be inserted to render the datum
  */
-class PlaintextShortCodeRenderer extends Renderer {
+class BPR_PlaintextShortCode extends BPR_Renderer {
 
 	/**
 	 * @var string the name of the shortcode (like "company-name" )
