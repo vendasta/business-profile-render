@@ -1,5 +1,7 @@
 <?php
 
+namespace BusinessProfileRender;
+
 defined( 'ABSPATH' ) || exit;
 
 
@@ -70,11 +72,11 @@ $example_json_string = '{
 }';
 
 /**
- * Class BPR_DataStorage
+ * Class DataStorage
  *
  * Loads the business profile data from the option
  */
-class BPR_DataStorage {
+class DataStorage {
 
 	/**
 	 * This is the name of the WordPress option that holds the encoded business profile data
@@ -82,7 +84,7 @@ class BPR_DataStorage {
 	const OPTION_STORAGE_NAME = 'bpr_business_profile';
 
 	/**
-	 * @var null|BPR_DataStorage - the constructed instance of this class
+	 * @var null|DataStorage - the constructed instance of this class
 	 */
 	private static $singleton = null;
 	/**
@@ -91,7 +93,7 @@ class BPR_DataStorage {
 	private $business_profile_array = null;
 
 	/**
-	 * @return BPR_DataStorage the constructed instance of this class
+	 * @return DataStorage the constructed instance of this class
 	 */
 	public static function instance() {
 		if ( is_null( self::$singleton ) ) {

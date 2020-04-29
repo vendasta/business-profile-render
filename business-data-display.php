@@ -12,6 +12,8 @@
  * Domain Path:
  */
 
+namespace BusinessProfileRender;
+
 defined( 'ABSPATH' ) || exit;
 require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
@@ -24,10 +26,10 @@ define( 'BUSINESS_PROFILE_RENDER_PATH', plugin_dir_path( BUSINESS_PROFILE_RENDER
 define( 'BUSINESS_PROFILE_RENDER_INCLUDE_PATH', BUSINESS_PROFILE_RENDER_PATH . 'includes/' );
 
 // Must come after constant definitions
-require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'class-bpr-controller.php' );
+require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'class-controller.php' );
 
 function business_profile_render_plugin() {
-	$instance = BPR_Controller::instance();
+	$instance = Controller::instance();
 	$instance->register_hooks();
 
 	return $instance;

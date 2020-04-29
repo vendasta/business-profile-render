@@ -1,32 +1,31 @@
 <?php
 
+namespace BusinessProfileRender;
 
 defined( 'ABSPATH' ) || exit;
-require( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'render/class-bpr-plaintext-short-code.php' );
-require( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'render/class-bpr-plaintext-reusable-block.php' );
+require( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'render/class-plaintext-short-code.php' );
+require( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'render/class-plaintext-reusable-block.php' );
 
 
 /**
- * Class BPR_Field
+ * Class ProfileField
  *
  * Provides the basic structure to register the settings/short codes/reusable blocks
  * Inherit from this class and override the unimplemented static methods
  */
-abstract class BPR_Field {
+abstract class ProfileField {
 
 	/**
-	 * @var BPR_Renderer[] - register during init
+	 * @var Renderer[] - register during init
 	 */
 	protected $renderers;
 
 	/**
-	 * BPR_Field constructor.
+	 * ProfileField constructor.
 	 *
 	 * Build the renderers and add registration actions.
 	 *
-	 * @param BPR_DataStorage - the storage object
-	 *
-	 * @throws Exception - when the abstract methods have not been overridden
+	 * @param DataStorage - the storage object
 	 */
 	public function __construct( $storage ) {
 		$value           = $storage->get( static::profile_option_name() );
@@ -44,13 +43,12 @@ abstract class BPR_Field {
 	 * @param string $readable_name - the name of this datum as read by a person
 	 * @param string|null $value - the value to render
 	 *
-	 * @return BPR_Renderer[] - the renderers that need to run while initializing WP in general
-	 * @throws Exception
+	 * @return Renderer[] - the renderers that need to run while initializing WP in general
 	 */
 	protected function construct_renderers( $code_name, $readable_name, $value ) {
 		return array(
-			new BPR_PlaintextShortCode( $code_name, $readable_name, $value ),
-			new BPR_PlaintextReusableBlock( $code_name, $readable_name, $value )
+			new PlaintextShortCode( $code_name, $readable_name, $value ),
+			new PlaintextReusableBlock( $code_name, $readable_name, $value )
 		);
 	}
 
@@ -61,7 +59,6 @@ abstract class BPR_Field {
 
 	/**
 	 * register each regular renderer
-	 * @throws Exception
 	 */
 	public function register() {
 		foreach ( $this->renderers as $renderer ) {

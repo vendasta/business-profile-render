@@ -1,12 +1,14 @@
 <?php
 
+namespace BusinessProfileRender;
+
 defined( 'ABSPATH' ) || exit;
 
 
 /**
- * Class BPR_Renderer - Extend this class to register different aspects of a business datum
+ * Class Renderer - Extend this class to register different aspects of a business datum
  */
-abstract class BPR_Renderer {
+abstract class Renderer {
 
 	/**
 	 * @var string the name of the option field (like "company_name")
@@ -43,7 +45,6 @@ abstract class BPR_Renderer {
 
 	/**
 	 * perform the registration
-	 *
 	 */
 	abstract public function register(): void;
 }

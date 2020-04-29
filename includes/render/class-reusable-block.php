@@ -1,13 +1,15 @@
 <?php
 
+namespace BusinessProfileRender;
+
 defined( 'ABSPATH' ) || exit;
-require_once( 'class-bpr-renderer.php' );
+require_once( 'class-renderer.php' );
 
 
 /**
- * Class BPR_ReusableBlock - Register a reusable block for the new block-editor that provides the short-code
+ * Class ReusableBlock - Register a reusable block for the new block-editor that provides the short-code
  */
-abstract class BPR_ReusableBlock extends BPR_Renderer {
+abstract class ReusableBlock extends Renderer {
 
 	/**
 	 * Create the WP-Block style "post"

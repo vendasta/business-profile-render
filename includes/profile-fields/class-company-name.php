@@ -1,13 +1,14 @@
 <?php
 
+namespace BusinessProfileRender;
 
 defined( 'ABSPATH' ) || exit;
-require_once( 'class-bpr-field.php' );
+require_once( 'class-field.php' );
 
 /**
- * Class BPR_CompanyName holds and displays the name of the company
+ * Class CompanyName holds and displays the name of the company
  */
-class BPR_CompanyName extends BPR_Field {
+class CompanyName extends ProfileField {
 
 	/**
 	 * @return  string the name of the datum containing relevant data

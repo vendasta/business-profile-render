@@ -1,30 +1,32 @@
 <?php
 
+namespace BusinessProfileRender;
+
 defined( 'ABSPATH' ) || exit;
-require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'class-bpr-data-storage.php' );
-require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-bpr-company-name.php' );
+require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'class-data-storage.php' );
+require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-company-name.php' );
 
 /**
- * Class BPR_Controller
+ * Class Controller
  *
  * Create and register necessary components
  */
-class BPR_Controller {
+class Controller {
 
 	const ACTIVATION_OPTION_KEY = "business_profile_render_version";
 
 	/**
-	 * @var BPR_Controller the instance of this class
+	 * @var Controller the instance of this class
 	 */
 	private static $singleton = null;
 
 	/**
-	 * @var BPR_DataStorage provides the interface to the data storage
+	 * @var DataStorage provides the interface to the data storage
 	 */
 	private $storage = null;
 
 	/**
-	 * @var array|BPR_Field[]
+	 * @var array|ProfileField[]
 	 */
 	private $profile_fields;
 
@@ -34,13 +36,13 @@ class BPR_Controller {
 	private $registered;
 
 	/**
-	 * BPR_Controller constructor.
+	 * Controller constructor.
 	 */
 	public function __construct() {
-		$this->storage        = BPR_DataStorage::instance();
+		$this->storage        = DataStorage::instance();
 		$this->registered     = false;
 		$this->profile_fields = array(
-			new BPR_CompanyName( $this->storage ),
+			new CompanyName( $this->storage ),
 			// TODO: add all the other business data classes and put them here
 		);
 	}
@@ -48,7 +50,7 @@ class BPR_Controller {
 	/**
 	 * return the instance of this class
 	 *
-	 * @return BPR_Controller
+	 * @return Controller
 	 */
 	public static function instance() {
 		if ( is_null( self::$singleton ) ) {

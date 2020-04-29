@@ -1,12 +1,14 @@
 <?php
 
+namespace BusinessProfileRender;
+
 defined( 'ABSPATH' ) || exit;
-require_once( 'class-bpr-renderer.php' );
+require_once( 'class-renderer.php' );
 
 /**
- * Class BPR_PlaintextShortCode - Register the short code that can be inserted to render the datum
+ * Class PlaintextShortCode - Register the short code that can be inserted to render the datum
  */
-class BPR_PlaintextShortCode extends BPR_Renderer {
+class PlaintextShortCode extends Renderer {
 
 	/**
 	 * @var string the name of the shortcode (like "company-name" )

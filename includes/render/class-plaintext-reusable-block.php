@@ -1,12 +1,14 @@
 <?php
 
+namespace BusinessProfileRender;
+
 defined( 'ABSPATH' ) || exit;
-require_once( 'class-bpr-reusable-block.php' );
+require_once( 'class-reusable-block.php' );
 
 /**
- * Class BPR_PlaintextReusableBlock - this is mostly an example that should be replaced
+ * Class PlaintextReusableBlock - this is mostly an example that should be replaced
  */
-class BPR_PlaintextReusableBlock extends BPR_ReusableBlock {
+class PlaintextReusableBlock extends ReusableBlock {
 
 	/**
 	 * return the content of the reusable block
