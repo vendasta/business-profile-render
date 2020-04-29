@@ -2,7 +2,7 @@
 
 defined( 'ABSPATH' ) || exit;
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'class-bpr-data-storage.php' );
-require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-company-name.php' );
+require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-bpr-company-name.php' );
 
 /**
  * Class BPR_Controller
