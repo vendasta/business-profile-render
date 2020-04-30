@@ -5,6 +5,7 @@ namespace BusinessProfileRender;
 defined( 'ABSPATH' ) || exit;
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'class-data-storage.php' );
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-company-name.php' );
+require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-address.php' );
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-company-description.php' );
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-company-short-description.php' );
 
@@ -45,6 +46,7 @@ class Controller {
 		$this->registered     = false;
 		$this->profile_fields = array(
 			new CompanyName( $this->storage ),
+			new Address( $this->storage ),
 			new CompanyDescription( $this->storage ),
 			new CompanyShortDescription( $this->storage ),
 			// TODO: add all the other business data classes and put them here

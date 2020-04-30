@@ -7,6 +7,7 @@ require_once( 'class-field.php' );
 
 /**
  * Class CompanyName holds and displays the name of the company
+ * Like "Business Incorporated"
  */
 class CompanyName extends ProfileField {
 

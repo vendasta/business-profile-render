@@ -7,6 +7,7 @@ require_once( 'class-field.php' );
 
 /**
  * Class CompanyShortDescription holds and displays the short description of the company
+ * like "Synergizing Solutions."
  */
 class CompanyShortDescription extends ProfileField {
 

@@ -6,22 +6,22 @@ defined( 'ABSPATH' ) || exit;
 require_once( 'class-field.php' );
 
 /**
- * Class CompanyDescription holds and displays the description of the company
- * like "The best business for synergizing solutions."
+ * Class Address holds and displays the street address of the company
+ * like "123 Main St"
  */
-class CompanyDescription extends ProfileField {
+class Address extends ProfileField {
 
 	/**
 	 * @return  string the name of the datum containing relevant data
 	 */
 	protected static function profile_option_name(): string {
-		return "description";
+		return "address";
 	}
 
 	/**
 	 * @return  string the name of this datum as read by a person
 	 */
 	protected static function readable_profile_option(): string {
-		return "Company Description";
+		return "Address";
 	}
 }
