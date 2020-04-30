@@ -25,6 +25,6 @@ class PlaintextReusableBlock extends ReusableBlock {
 	 * @return string - the name of the block
 	 */
 	protected function get_title(): string {
-		return sanitize_title( BUSINESS_PROFILE_RENDER_NAME . ' ' . $this->readable_name . ' Plaintext Block' );
+		return  'BPR ' . $this->readable_name . ' Plaintext' ;
 	}
 }
