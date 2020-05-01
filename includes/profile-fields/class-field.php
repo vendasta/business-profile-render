@@ -3,8 +3,8 @@
 namespace BusinessProfileRender;
 
 defined( 'ABSPATH' ) || exit;
-require( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'render/class-plaintext-short-code.php' );
-require( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'render/class-plaintext-reusable-block.php' );
+require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'render/class-plaintext-short-code.php' );
+require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'render/class-plaintext-reusable-block.php' );
 
 
 /**

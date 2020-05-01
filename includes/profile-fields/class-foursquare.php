@@ -4,8 +4,8 @@ namespace BusinessProfileRender;
 
 defined( 'ABSPATH' ) || exit;
 require_once( 'class-field.php' );
-require( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'render/class-linked-image-short-code.php' );
-require( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'render/class-linked-image-reusable-block.php' );
+require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'render/class-linked-image-short-code.php' );
+require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'render/class-linked-image-reusable-block.php' );
 
 /**
  * Class Foursquare holds and displays the business' Foursquare URL
