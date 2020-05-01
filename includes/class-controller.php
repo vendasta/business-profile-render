@@ -10,6 +10,7 @@ require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-city.
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-state.php' );
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-country.php' );
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-toll-free-number.php' );
+require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-contact-email.php' );
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-company-description.php' );
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-company-short-description.php' );
 
@@ -55,6 +56,7 @@ class Controller {
 			new State( $this->storage ),
 			new Country( $this->storage ),
 			new TollFreeNumber( $this->storage ),
+			new ContactEmail( $this->storage ),
 			new CompanyDescription( $this->storage ),
 			new CompanyShortDescription( $this->storage ),
 			// TODO: add all the other business data classes and put them here
