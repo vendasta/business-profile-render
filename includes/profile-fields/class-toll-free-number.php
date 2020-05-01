@@ -6,7 +6,7 @@ defined( 'ABSPATH' ) || exit;
 require_once( 'class-field.php' );
 
 /**
- * Class City holds and displays the business' Toll Free Number
+ * Class TollFreeNumber holds and displays the business' Toll Free Number
  * Like "800-234-5678"
  */
 class TollFreeNumber extends ProfileField {
