@@ -25,6 +25,6 @@ class PlaintextReusableBlock extends ReusableBlock {
 	 * @return string - the name of the block
 	 */
 	protected function get_title(): string {
-		return  'BPR ' . $this->readable_name . ' Plaintext' ;
+		return 'BPR ' . $this->readable_name . ' Plaintext';
 	}
 }
