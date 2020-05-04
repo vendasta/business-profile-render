@@ -12,6 +12,7 @@ require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-count
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-toll-free-number.php' );
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-contact-email.php' );
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-foursquare.php' );
+require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-twitter.php' );
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-company-description.php' );
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-company-short-description.php' );
 
@@ -61,6 +62,7 @@ class Controller {
 			new CompanyShortDescription( $this->storage ),
 			new ContactEmail( $this->storage ),
 			new Foursquare( $this->storage ),
+			new Twitter( $this->storage ),
 			// TODO: add all the other business data classes and put them here
 		);
 	}
