@@ -22,7 +22,7 @@ class LinkedImageReusableBlock extends ReusableBlock {
 
 	public function __construct( $code_name, $readable_name, $value, $image_name, $image_styles = "" ) {
 		parent::__construct( $code_name, $readable_name, $value );
-		$this->image_name = $image_name;
+		$this->image_name   = $image_name;
 		$this->image_styles = $image_styles;
 	}
 
