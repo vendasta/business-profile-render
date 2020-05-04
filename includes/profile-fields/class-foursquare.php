@@ -30,7 +30,7 @@ class Foursquare extends SocialLink {
 	 * these images were taken from https://foursquare.com/about/logos
 	 */
 	protected static function public_image_icon(): string {
-		return "foursquare-social-logo-32x32.png";
+		return "foursquare.svg";
 	}
 
 }

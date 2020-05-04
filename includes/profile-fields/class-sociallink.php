@@ -22,8 +22,8 @@ abstract class SocialLink extends ProfileField {
 	protected function construct_renderers( $code_name, $readable_name, $value ) {
 		$renderers = parent::construct_renderers( $code_name, $readable_name, $value );
 		array_push( $renderers,
-			new LinkedImageShortCode( $code_name, $readable_name, $value, static::public_image_icon() ),
-			new LinkedImageReusableBlock( $code_name, $readable_name, $value, static::public_image_icon() ),
+			new LinkedImageShortCode( $code_name, $readable_name, $value, static::public_image_icon(), $image_styles = "height:32px;width:32px;" ),
+			new LinkedImageReusableBlock( $code_name, $readable_name, $value, static::public_image_icon(), $image_styles = "height:32px;width:32px;" ),
 		);
 
 		return $renderers;
