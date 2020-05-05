@@ -38,7 +38,7 @@ abstract class ProfileField {
 	 *
 	 * @return string|mixed - return the value from the storage class
 	 */
-	protected function get_value( $storage ): string {
+	protected function get_value( $storage ) {
 		return $storage->get( static::profile_option_name() );
 	}
 
