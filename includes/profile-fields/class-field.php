@@ -43,6 +43,11 @@ abstract class ProfileField {
 	}
 
 	/**
+	 * @return string the name of the datum containing relevant data
+	 */
+	abstract protected static function profile_option_name(): string;
+
+	/**
 	 * @param string $code_name - the name of the datum to register
 	 * @param string $readable_name - the name of this datum as read by a person
 	 * @param string|null $value - the value to render
@@ -57,6 +62,11 @@ abstract class ProfileField {
 	}
 
 	/**
+	 * @return string the name of this datum as read by a person
+	 */
+	abstract protected static function readable_profile_option(): string;
+
+	/**
 	 * register each regular renderer
 	 */
 	public function register() {
@@ -64,14 +74,4 @@ abstract class ProfileField {
 			$renderer->register();
 		}
 	}
-
-	/**
-	 * @return string the name of this datum as read by a person
-	 */
-	abstract protected static function readable_profile_option(): string;
-
-	/**
-	 * @return string the name of the datum containing relevant data
-	 */
-	abstract protected static function profile_option_name(): string;
 }

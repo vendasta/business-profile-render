@@ -13,6 +13,11 @@ require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'render/class-image-reusabl
 abstract class ImageField extends ProfileField {
 
 	/**
+	 * @return string the name of this datum as read by a person
+	 */
+	abstract protected static function readable_profile_option(): string;
+
+	/**
 	 * @param string $code_name - the name of the datum to register
 	 * @param string $readable_name - the name of this datum as read by a person
 	 * @param string|null $value - the value to render
@@ -34,7 +39,7 @@ abstract class ImageField extends ProfileField {
 	protected function get_value( $storage ): string {
 		$image_arr = $storage->get( static::profile_option_name() );
 
-		return $image_arr[static::image_option_name()];
+		return $image_arr[ static::image_option_name() ];
 	}
 
 	/**
@@ -48,9 +53,4 @@ abstract class ImageField extends ProfileField {
 	 * @return string the name of this image from the images array
 	 */
 	abstract protected static function image_option_name(): string;
-
-	/**
-	 * @return string the name of this datum as read by a person
-	 */
-	abstract protected static function readable_profile_option(): string;
 }

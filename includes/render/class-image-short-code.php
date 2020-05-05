@@ -15,7 +15,7 @@ class ImageShortCode extends Renderer {
 	 */
 	protected $short_code_name;
 
-	public function __construct( $code_name, $readable_name, $value) {
+	public function __construct( $code_name, $readable_name, $value ) {
 		parent::__construct( $code_name, $readable_name, $value );
 		$this->short_code_name = sanitize_title( BUSINESS_PROFILE_RENDER_NAME . ' image ' . $readable_name );
 	}
@@ -44,15 +44,16 @@ class ImageShortCode extends Renderer {
 			return '[' . $this->short_code_name . ']';
 		}
 
-		$escaped_image          = esc_attr( $this->value );
+		$escaped_image         = esc_attr( $this->value );
 		$escaped_readable_name = esc_attr( $this->readable_name );
 		$class_name            = sanitize_title( BUSINESS_PROFILE_RENDER_NAME . ' ' . $this->readable_name );
 
-		if( $escaped_image === "" ) {
+		if ( $escaped_image === "" ) {
 			$alt_text = "no image configured for $escaped_readable_name";
 		} else {
 			$alt_text = $escaped_readable_name;
 		}
+
 		return "
 <div class=\"$class_name\">
 	<img src=\"$escaped_image\" alt=\"$alt_text\">

@@ -20,11 +20,12 @@ class ImageReusableBlock extends ReusableBlock {
 		$escaped_readable_name = esc_attr( $this->readable_name );
 		$class_name            = sanitize_title( BUSINESS_PROFILE_RENDER_NAME . ' ' . $this->readable_name );
 
-		if( $escaped_image === "" ) {
+		if ( $escaped_image === "" ) {
 			$alt_text = "no image configured for $escaped_readable_name";
 		} else {
 			$alt_text = $escaped_readable_name;
 		}
+
 		return "
 <!-- wp:image -->
 	<figure class=\"wp-block-image figure_$class_name\"><img src=\"$escaped_image\" alt=\"$alt_text\"/></figure>
