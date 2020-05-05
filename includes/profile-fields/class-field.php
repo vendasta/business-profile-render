@@ -28,15 +28,19 @@ abstract class ProfileField {
 	 * @param DataStorage - the storage object
 	 */
 	public function __construct( $storage ) {
-		$value           = $storage->get( static::profile_option_name() );
+		$value           = $this->get_value( $storage );
 		$this->renderers = $this->construct_renderers( static::profile_option_name(), static::readable_profile_option(), $value );
 		add_action( 'init', array( $this, 'register' ) );
 	}
 
 	/**
-	 * @return string the name of the datum containing relevant data
+	 * @param DataStorage - the storage object
+	 *
+	 * @return string|mixed - return the value from the storage class
 	 */
-	abstract protected static function profile_option_name(): string;
+	protected function get_value( $storage ): string {
+		return $storage->get( static::profile_option_name() );
+	}
 
 	/**
 	 * @param string $code_name - the name of the datum to register
@@ -53,11 +57,6 @@ abstract class ProfileField {
 	}
 
 	/**
-	 * @return string the name of this datum as read by a person
-	 */
-	abstract protected static function readable_profile_option(): string;
-
-	/**
 	 * register each regular renderer
 	 */
 	public function register() {
@@ -65,4 +64,14 @@ abstract class ProfileField {
 			$renderer->register();
 		}
 	}
+
+	/**
+	 * @return string the name of this datum as read by a person
+	 */
+	abstract protected static function readable_profile_option(): string;
+
+	/**
+	 * @return string the name of the datum containing relevant data
+	 */
+	abstract protected static function profile_option_name(): string;
 }

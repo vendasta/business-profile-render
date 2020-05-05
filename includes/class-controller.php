@@ -19,6 +19,7 @@ require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-faceb
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-pinterest.php' );
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-rss.php' );
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-youtube.php' );
+require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-primaryimage.php' );
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-company-description.php' );
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-company-short-description.php' );
 
@@ -75,6 +76,7 @@ class Controller {
 			new Facebook( $this->storage ),
 			new Rss( $this->storage ),
 			new YouTube( $this->storage ),
+			new PrimaryImage( $this->storage ),
 			// TODO: add all the other business data classes and put them here
 		);
 	}
