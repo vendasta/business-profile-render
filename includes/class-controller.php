@@ -23,6 +23,7 @@ require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-prima
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-logoimage.php' );
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-worknumber.php' );
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-services.php' );
+require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-hoursofoperation.php' );
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-company-description.php' );
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-company-short-description.php' );
 
@@ -83,6 +84,7 @@ class Controller {
 			new LogoImage( $this->storage ),
 			new WorkNumber( $this->storage ),
 			new Services( $this->storage ),
+			new HoursOfOperation( $this->storage ),
 			// TODO: add all the other business data classes and put them here
 		);
 	}
