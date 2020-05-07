@@ -21,13 +21,13 @@ class HoursOfOperation extends ProfileField {
 	const public_holidays_key = "PublicHolidays";
 	const public_holidays = "Public Holidays";
 	const ordered_days = array(
-		"Sunday",
 		"Monday",
 		"Tuesday",
 		"Wednesday",
 		"Thursday",
 		"Friday",
 		"Saturday",
+		"Sunday",
 		HoursOfOperation::public_holidays
 	);
 
@@ -45,22 +45,17 @@ class HoursOfOperation extends ProfileField {
 		return "hours_of_operation";
 	}
 
+	/**
+	 * @param string $input - typically a time string like "13:12:00" or "03:43:12"
+	 *
+	 * @return string - converted to more human friendly format "1:12PM" or "3:43AM"
+	 */
 	protected function format_time_string( $input ): string {
-		if ( $input === "" ) {
+		$d = \DateTime::createFromFormat( 'Y-m-d H:i:s', "1985-05-12 $input" );
+		if ( ! $d ) {
 			return "";
 		}
-		$parts = explode( ":", $input );
-		if ( count( $parts ) === 3 && end( $parts ) === "00" ) {
-			array_pop( $parts );
-		}
-		if ( (int) $parts[0] > 12 ) {
-			$parts[0] = (string) ( (int) $parts[0] - 12 );
-			$append   = "PM";
-		} else {
-			$append = "AM";
-		}
-
-		return implode( ":", $parts ) . "$append";
+		return $d->format( 'g:iA' );
 	}
 
 	/**
