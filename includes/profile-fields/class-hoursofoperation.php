@@ -9,13 +9,27 @@ require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'render/class-hoursofoperat
 
 /**
  * Class HoursOfOperation holds and displays the business' open hours
- * Like "Siding installation" and "Roof Repair".
+ * Like:
+ * Sunday & Monday: 11:00AM-4:00PM
+ * Tuesday—Thursday: 10:00AM-5:00PM
+ * Friday: 9:00AM-5:00PM
+ * Saturday: 10:00AM-5:00PM some notes about this day
+ * Public Holidays: Closed on all Holidays
  */
 class HoursOfOperation extends ProfileField {
 
 	const public_holidays_key = "PublicHolidays";
 	const public_holidays = "Public Holidays";
-	const ordered_days = array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", HoursOfOperation::public_holidays);
+	const ordered_days = array(
+		"Sunday",
+		"Monday",
+		"Tuesday",
+		"Wednesday",
+		"Thursday",
+		"Friday",
+		"Saturday",
+		HoursOfOperation::public_holidays
+	);
 
 	/**
 	 * @return  string the name of this datum as read by a person
@@ -74,8 +88,8 @@ class HoursOfOperation extends ProfileField {
 
 		$ordered_hours = array();
 		foreach ( $this::ordered_days as $day ) {
-			if ( array_key_exists($day, $unordered_hours) ) {
-				$ordered_hours[$day] = $unordered_hours[$day];
+			if ( array_key_exists( $day, $unordered_hours ) ) {
+				$ordered_hours[ $day ] = $unordered_hours[ $day ];
 			}
 		}
 
