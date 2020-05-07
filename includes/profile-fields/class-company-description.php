@@ -24,4 +24,11 @@ class CompanyDescription extends ProfileField {
 	protected static function readable_profile_option(): string {
 		return "Company Description";
 	}
+
+	/**
+	 * @return string the meaningful description of this datum as read by a person
+	 */
+	protected static function readable_description(): string {
+		return "A longer description of the company.";
+	}
 }

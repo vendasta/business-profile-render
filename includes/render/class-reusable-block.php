@@ -23,14 +23,17 @@ abstract class ReusableBlock extends Renderer {
 			'posts_per_page' => 1
 		) );
 
+		$content = $this->block_content();
 		if ( $reusable_block ) {
-			wp_update_post( array(
-				'ID'           => $reusable_block[0]->ID,
-				'post_content' => $this->block_content()
-			) );
+			if ( $reusable_block[0]->post_content !== $content ) {
+				wp_update_post( array(
+					'ID'           => $reusable_block[0]->ID,
+					'post_content' => $content
+				) );
+			}
 		} else {
 			wp_insert_post( array(
-				'post_content'   => $this->block_content(),
+				'post_content'   => $content,
 				'post_title'     => $title,
 				'post_type'      => 'wp_block',
 				'post_status'    => 'publish',
@@ -54,4 +57,29 @@ abstract class ReusableBlock extends Renderer {
 	 * @return string - the content of the block
 	 */
 	abstract protected function block_content(): string;
+
+	/***
+	 * @return string - the heading for the section explaining how to use this renderer
+	 */
+	protected function get_usage_heading(): string {
+		return "$this->readable_name Reusable Block";
+	}
+
+	/***
+	 * @return string - the instruction for using this renderer
+	 */
+	protected function get_instruction_html(): string {
+		$title = $this->get_title();
+
+		return "To use this Reusable Block, add it to your page or post while 
+in Block Editor mode. It will be in the Reusable Block list, named <code>$title</code>";
+	}
+
+	/***
+	 * @return string - the rendered HTML content this renderer produces
+	 */
+	protected function get_render_value(): string {
+		return $this->block_content();
+	}
+
 }

@@ -18,6 +18,11 @@ abstract class ImageField extends ProfileField {
 	abstract protected static function readable_profile_option(): string;
 
 	/**
+	 * @return string the meaningful description of this datum as read by a person
+	 */
+	abstract protected static function readable_description(): string;
+
+	/**
 	 * @param string $code_name - the name of the datum to register
 	 * @param string $readable_name - the name of this datum as read by a person
 	 * @param string|null $value - the value to render

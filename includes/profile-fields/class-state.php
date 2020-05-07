@@ -24,4 +24,11 @@ class State extends ProfileField {
 	protected static function readable_profile_option(): string {
 		return "State";
 	}
+
+	/**
+	 * @return string the meaningful description of this datum as read by a person
+	 */
+	protected static function readable_description(): string {
+		return "The State or Province in which the business is located.";
+	}
 }

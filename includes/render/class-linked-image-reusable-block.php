@@ -20,6 +20,15 @@ class LinkedImageReusableBlock extends ReusableBlock {
 	 */
 	protected $image_styles;
 
+	/**
+	 * LinkedImageReusableBlock constructor.
+	 *
+	 * @param string $code_name - the name of the datum to register
+	 * @param string $readable_name - the name of this datum as read by a person
+	 * @param string $value - the URL of the image
+	 * @param $image_name - the name of this specific image
+	 * @param string $image_styles - specific inline styles to add to this image
+	 */
 	public function __construct( $code_name, $readable_name, $value, $image_name, $image_styles = "" ) {
 		parent::__construct( $code_name, $readable_name, $value );
 		$this->image_name   = $image_name;

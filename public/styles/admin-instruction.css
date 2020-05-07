@@ -1,0 +1,18 @@
+.bpr-profile-field-heading {
+    font-size: 2em;
+}
+
+.bpr-profile-field-option-container {
+    display: flex;
+}
+
+.bpr-usage-container {
+    background: lightgrey;
+    margin: 5px;
+    padding: 10px;
+}
+
+.bpr-usage-instruction {
+    min-height: 80px;
+    max-width: 500px;
+}

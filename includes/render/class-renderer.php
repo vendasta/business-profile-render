@@ -47,4 +47,35 @@ abstract class Renderer {
 	 * perform the registration
 	 */
 	abstract public function register(): void;
+
+	public function get_usage_html(): string {
+		$base_class  = "bpr-usage";
+		$heading     = $this->get_usage_heading();
+		$instruction = $this->get_instruction_html();
+		$value       = $this->get_render_value();
+
+		return "
+<div class='$base_class-container'>
+	<div class='$base_class-heading'>$heading</div>
+	<div class='$base_class-instruction'>$instruction</div>
+	<div class='$base_class-value-container'>It will render:<div class='$base_class-value'>$value</div></div>
+</div>";
+	}
+
+	/***
+	 * @return string - the heading for the section explaining how to use this renderer
+	 */
+	abstract protected function get_usage_heading(): string;
+
+	/***
+	 * @return string - the instruction for using this renderer
+	 */
+	abstract protected function get_instruction_html(): string;
+
+	/***
+	 * @return string - the rendered HTML content this renderer produces
+	 */
+	protected function get_render_value(): string {
+		return esc_attr( $this->value );
+	}
 }

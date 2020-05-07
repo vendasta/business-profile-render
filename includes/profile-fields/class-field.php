@@ -74,4 +74,41 @@ abstract class ProfileField {
 			$renderer->register();
 		}
 	}
+
+	public function admin_instruction_html() {
+		$heading           = $this->admin_html_heading();
+		$field_description = $this->admin_html_description();
+		$field_options     = $this->admin_html_options();
+
+		return "
+<div class='bpr-profile-field-instruction'>
+	$heading
+	$field_description
+	$field_options
+</div>";
+	}
+
+	protected function admin_html_heading() {
+		return "<h2 class='bpr-profile-field-heading'>" . static::readable_profile_option() . "</h2>";
+	}
+
+	protected function admin_html_description() {
+		return "<p class='bpr-profile-field-description'>" . static::readable_description() . "</p>";
+	}
+
+	/**
+	 * @return string the meaningful description of this datum as read by a person
+	 */
+	abstract protected static function readable_description(): string;
+
+	protected function admin_html_options() {
+		$usages = array();
+		foreach ( $this->renderers as $renderer ) {
+			array_push( $usages, $renderer->get_usage_html() );
+		}
+		$usage = implode( "\n", $usages );
+
+		return "<div class='bpr-profile-field-option-container'>$usage</div>";
+	}
+
 }

@@ -45,22 +45,11 @@ class HoursOfOperation extends ProfileField {
 		return "hours_of_operation";
 	}
 
-	protected function format_time_string( $input ): string {
-		if ( $input === "" ) {
-			return "";
-		}
-		$parts = explode( ":", $input );
-		if ( count( $parts ) === 3 && end( $parts ) === "00" ) {
-			array_pop( $parts );
-		}
-		if ( (int) $parts[0] > 12 ) {
-			$parts[0] = (string) ( (int) $parts[0] - 12 );
-			$append   = "PM";
-		} else {
-			$append = "AM";
-		}
-
-		return implode( ":", $parts ) . "$append";
+	/**
+	 * @return string the meaningful description of this datum as read by a person
+	 */
+	protected static function readable_description(): string {
+		return "The hours of operation of the business.";
 	}
 
 	/**
@@ -97,5 +86,23 @@ class HoursOfOperation extends ProfileField {
 			new HoursOfOperationReusableBlock( $code_name, $readable_name, $ordered_hours ),
 			new HoursOfOperationShortCode( $code_name, $readable_name, $ordered_hours ),
 		);
+	}
+
+	protected function format_time_string( $input ): string {
+		if ( $input === "" ) {
+			return "";
+		}
+		$parts = explode( ":", $input );
+		if ( count( $parts ) === 3 && end( $parts ) === "00" ) {
+			array_pop( $parts );
+		}
+		if ( (int) $parts[0] > 12 ) {
+			$parts[0] = (string) ( (int) $parts[0] - 12 );
+			$append   = "PM";
+		} else {
+			$append = "AM";
+		}
+
+		return implode( ":", $parts ) . "$append";
 	}
 }

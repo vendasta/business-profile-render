@@ -24,4 +24,11 @@ class Country extends ProfileField {
 	protected static function readable_profile_option(): string {
 		return "Country";
 	}
+
+	/**
+	 * @return string the meaningful description of this datum as read by a person
+	 */
+	protected static function readable_description(): string {
+		return "The country in which the business is located (ie 'England').";
+	}
 }

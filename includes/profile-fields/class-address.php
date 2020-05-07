@@ -24,4 +24,12 @@ class Address extends ProfileField {
 	protected static function readable_profile_option(): string {
 		return "Address";
 	}
+
+	/**
+	 * @return string the meaningful description of this datum as read by a person
+	 */
+	protected static function readable_description(): string {
+		return "The physical street address of the business (ie '123 Main Street').";
+	}
+
 }

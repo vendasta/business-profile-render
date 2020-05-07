@@ -32,4 +32,11 @@ class Pinterest extends SocialLink {
 		return "pinterest.svg";
 	}
 
+	/**
+	 * @return string the meaningful description of this datum as read by a person
+	 */
+	protected static function readable_description(): string {
+		return "The URL of the business' Pinterest Page.";
+	}
+
 }

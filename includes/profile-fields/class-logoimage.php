@@ -23,4 +23,11 @@ class LogoImage extends ImageField {
 	protected static function readable_profile_option(): string {
 		return 'Logo';
 	}
+
+	/**
+	 * @return string the meaningful description of this datum as read by a person
+	 */
+	protected static function readable_description(): string {
+		return "The image configured to represent the Logo of the business.";
+	}
 }

@@ -23,4 +23,11 @@ class PrimaryImage extends ImageField {
 	protected static function readable_profile_option(): string {
 		return 'Primary';
 	}
+
+	/**
+	 * @return string the meaningful description of this datum as read by a person
+	 */
+	protected static function readable_description(): string {
+		return "An image configured to be representative of the business.";
+	}
 }

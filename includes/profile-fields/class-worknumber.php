@@ -19,6 +19,13 @@ class WorkNumber extends ProfileField {
 	}
 
 	/**
+	 * @return string the meaningful description of this datum as read by a person
+	 */
+	protected static function readable_description(): string {
+		return "The Phone Number that can be used to contact this business.";
+	}
+
+	/**
 	 * @param DataStorage - the storage object
 	 *
 	 * @return string|mixed - return the value from the storage class

@@ -10,7 +10,6 @@ require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-city.
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-state.php' );
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-country.php' );
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-toll-free-number.php' );
-require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-contact-email.php' );
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-foursquare.php' );
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-twitter.php' );
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-instagram.php' );
@@ -68,10 +67,14 @@ class Controller {
 			new City( $this->storage ),
 			new State( $this->storage ),
 			new Country( $this->storage ),
+			new WorkNumber( $this->storage ),
 			new TollFreeNumber( $this->storage ),
+			new HoursOfOperation( $this->storage ),
 			new CompanyDescription( $this->storage ),
 			new CompanyShortDescription( $this->storage ),
-			new ContactEmail( $this->storage ),
+			new PrimaryImage( $this->storage ),
+			new LogoImage( $this->storage ),
+			new Services( $this->storage ),
 			new Foursquare( $this->storage ),
 			new Twitter( $this->storage ),
 			new Instagram( $this->storage ),
@@ -80,12 +83,6 @@ class Controller {
 			new Facebook( $this->storage ),
 			new Rss( $this->storage ),
 			new YouTube( $this->storage ),
-			new PrimaryImage( $this->storage ),
-			new LogoImage( $this->storage ),
-			new WorkNumber( $this->storage ),
-			new Services( $this->storage ),
-			new HoursOfOperation( $this->storage ),
-			// TODO: add all the other business data classes and put them here
 		);
 	}
 
@@ -94,7 +91,7 @@ class Controller {
 	 *
 	 * @return Controller
 	 */
-	public static function instance() {
+	public static function instance(): Controller {
 		if ( is_null( self::$singleton ) ) {
 			self::$singleton = new self();
 		}
@@ -105,14 +102,21 @@ class Controller {
 	/**
 	 * Run on activation - save the name/version to the settings
 	 */
-	public function activate() {
+	public function activate(): void {
 		update_option( static::ACTIVATION_OPTION_KEY, BUSINESS_PROFILE_RENDER_VERSION );
+	}
+
+	/**
+	 * Run on deactivate - remove the name/version to the settings
+	 */
+	public function deactivate(): void {
+		delete_option( static::ACTIVATION_OPTION_KEY );
 	}
 
 	/**
 	 * register the activation and deactivation hook with WordPress
 	 */
-	public function register_hooks() {
+	public function register_hooks(): void {
 		if ( ! $this->registered ) {
 			register_activation_hook( BUSINESS_PROFILE_RENDER_FILE, array( $this, 'activate' ) );
 			register_deactivation_hook( BUSINESS_PROFILE_RENDER_FILE, array( $this, 'deactivate' ) );
@@ -121,9 +125,46 @@ class Controller {
 	}
 
 	/**
-	 * Run on deactivate - remove the name/version to the settings
+	 * render the admin tab which provides instructions about using the renderer classes
 	 */
-	public function deactivate() {
-		delete_option( static::ACTIVATION_OPTION_KEY );
+	public function add_admin_tab_action(): void {
+		add_action( 'admin_menu', array( $this, 'add_admin_tab' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'add_admin_instruction_styles' ) );
+	}
+
+	/**
+	 * add the sub-tab under the "Tools" tab
+	 */
+	public function add_admin_tab(): void {
+		add_submenu_page(
+			"tools.php",
+			BUSINESS_PROFILE_RENDER_NAME,
+			BUSINESS_PROFILE_RENDER_NAME,
+			"edit_posts",
+			sanitize_key( BUSINESS_PROFILE_RENDER_NAME ),
+			array( $this, 'sub_tab_html' ),
+			null );
+	}
+
+	/**
+	 * This is the callback that outputs HTML for the actual sub-tab
+	 */
+	public function sub_tab_html(): void {
+		echo "<h1>" . BUSINESS_PROFILE_RENDER_NAME . "</h1>
+<p>Your Business Profile has important contact information for your business.
+This plugin provides ways to automatically render this information on your site.
+This includes both <a href='https://codex.wordpress.org/Shortcode'>Shortcodes</a>
+and reusable <a href='https://wordpress.org/support/article/blocks/'>Blocks</a>.</p>";
+
+		foreach ( $this->profile_fields as $field ) {
+			echo $field->admin_instruction_html();
+		}
+	}
+
+	/**
+	 * Load the CSS for the sub-tab
+	 */
+	public function add_admin_instruction_styles(): void {
+		wp_enqueue_style( 'admin-styles', BUSINESS_PROFILE_RENDER_WEB_PATH_PUBLIC . '/styles/admin-instruction.css' );
 	}
 }

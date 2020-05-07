@@ -32,4 +32,11 @@ class LinkedIn extends SocialLink {
 		return "linkedin.svg";
 	}
 
+	/**
+	 * @return string the meaningful description of this datum as read by a person
+	 */
+	protected static function readable_description(): string {
+		return "The URL of the business' LinkedIn Page.";
+	}
+
 }

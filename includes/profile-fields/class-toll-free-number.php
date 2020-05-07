@@ -24,4 +24,11 @@ class TollFreeNumber extends ProfileField {
 	protected static function readable_profile_option(): string {
 		return "Toll Free Number";
 	}
+
+	/**
+	 * @return string the meaningful description of this datum as read by a person
+	 */
+	protected static function readable_description(): string {
+		return "The Toll Free Number that can be used to contact this business.";
+	}
 }

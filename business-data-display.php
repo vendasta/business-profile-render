@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Business Profile Render
+ * Plugin Name: Business Profile Data
  * Plugin URI:
  * Description: Tool to provide utilities for displaying synchronized Business Data
  * Version:     1.0.0
@@ -31,9 +31,16 @@ define( 'BUSINESS_PROFILE_RENDER_WEB_PATH_PUBLIC', BUSINESS_PROFILE_RENDER_WEB_P
 // Must come after constant definitions
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'class-controller.php' );
 
+/**
+ * Run the controller's registration
+ * @return Controller
+ */
 function business_profile_render_plugin() {
 	$instance = Controller::instance();
 	$instance->register_hooks();
+	if ( is_admin() ) {
+		$instance->add_admin_tab_action();
+	}
 
 	return $instance;
 }

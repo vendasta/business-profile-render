@@ -3,17 +3,12 @@
 namespace BusinessProfileRender;
 
 defined( 'ABSPATH' ) || exit;
-require_once( 'class-renderer.php' );
+require_once( 'class-plaintext-short-code.php' );
 
 /**
  * Class LinkedImageShortCode - Register the short code that can be inserted to render an image that acts as a link
  */
-class LinkedImageShortCode extends Renderer {
-
-	/**
-	 * @var string the name of the shortcode (like "foursquare-icon-link" )
-	 */
-	protected $short_code_name;
+class LinkedImageShortCode extends PlaintextShortCode {
 
 	/**
 	 * @var string the name of the image that renders the icon (like "foursquare.svg" )
@@ -25,6 +20,15 @@ class LinkedImageShortCode extends Renderer {
 	 */
 	protected $image_styles;
 
+	/**
+	 * LinkedImageShortCode constructor.
+	 *
+	 * @param string $code_name - the name of the datum to register
+	 * @param string $readable_name - the name of this datum as read by a person
+	 * @param string $value - the URL of the image
+	 * @param $image_name - the name of this specific image
+	 * @param string $image_styles - specific inline styles to add to this image
+	 */
 	public function __construct( $code_name, $readable_name, $value, $image_name, $image_styles = "" ) {
 		parent::__construct( $code_name, $readable_name, $value );
 		$this->short_code_name = sanitize_title( BUSINESS_PROFILE_RENDER_NAME . ' image link ' . $readable_name );
@@ -33,28 +37,9 @@ class LinkedImageShortCode extends Renderer {
 	}
 
 	/**
-	 * Register the short code with WordPress
+	 * @return string - the HTML that renders the image tag
 	 */
-	public function register(): void {
-		add_shortcode( $this->short_code_name, array(
-			$this,
-			'get_short_code_business_profile'
-		) );
-	}
-
-	/**
-	 * This runs to render content when the short code is used on a page
-	 *
-	 * @param $atts
-	 * @param null $content
-	 * @param string $code
-	 *
-	 * @return string|void - the value stored in the business datum's setting
-	 */
-	public function get_short_code_business_profile( $atts, $content = null, $code = '' ) {
-		if ( is_feed() ) {
-			return '[' . $this->short_code_name . ']';
-		}
+	protected function get_render_value(): string {
 
 		$escaped_link          = esc_attr( $this->value );
 		$escaped_image         = esc_attr( BUSINESS_PROFILE_RENDER_WEB_PATH_PUBLIC . 'images/' . $this->image_name );

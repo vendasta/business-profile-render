@@ -44,7 +44,7 @@ if ( ! function_exists( "hours_of_operation_html" ) ) {
 if ( ! function_exists( "get_list_element" ) ) {
 
 	/**
-	 * @param string $class_name  - a base class to apply to the html elements
+	 * @param string $class_name - a base class to apply to the html elements
 	 * @param array $consecutive_days - an array of consecutive days that have the same hours+notes
 	 * @param string $hours - describes the range of open hours
 	 *
@@ -56,7 +56,7 @@ if ( ! function_exists( "get_list_element" ) ) {
 				$result = "";
 				break;
 			case 1:
-				$day = $consecutive_days[0];
+				$day    = $consecutive_days[0];
 				$result = "<li class='li-$class_name'>" . esc_attr( "$day: $hours" ) . "</li>";
 				break;
 			case 2:
@@ -65,10 +65,10 @@ if ( ! function_exists( "get_list_element" ) ) {
 			default:
 				$first_day = $consecutive_days[0];
 				$last_day  = array_pop( $consecutive_days );
-
-				$result = "<li class='li-$class_name'>" . esc_attr( "$first_day" . "—" . "$last_day: $hours" ) . "</li>";
+				$result    = "<li class='li-$class_name'>" . esc_attr( "$first_day" . "—" . "$last_day: $hours" ) . "</li>";
 				break;
 		}
+
 		return $result;
 	}
 }

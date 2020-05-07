@@ -44,6 +44,22 @@ class PlaintextShortCode extends Renderer {
 			return '[' . $this->short_code_name . ']';
 		}
 
-		return esc_attr( $this->value );
+		return $this->get_render_value();
+	}
+
+	/**
+	 * @return string - the HTML explaining how to use this renderer
+	 */
+	protected function get_instruction_html(): string {
+		$short_code = '[' . $this->short_code_name . ']';
+
+		return "To use this Shortcode, use <code>$short_code</code>";
+	}
+
+	/***
+	 * @return string - the heading for the section explaining how to use this renderer
+	 */
+	protected function get_usage_heading(): string {
+		return "$this->readable_name ShortCode";
 	}
 }

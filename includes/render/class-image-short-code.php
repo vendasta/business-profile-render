@@ -3,47 +3,17 @@
 namespace BusinessProfileRender;
 
 defined( 'ABSPATH' ) || exit;
-require_once( 'class-renderer.php' );
+require_once( 'class-plaintext-short-code.php' );
 
 /**
  * Class ImageShortCode - Register the short code that can be inserted to render an image
  */
-class ImageShortCode extends Renderer {
+class ImageShortCode extends PlaintextShortCode {
 
 	/**
-	 * @var string the name of the shortcode (like "primary-image" )
+	 * @return string - the HTML that renders the image tab
 	 */
-	protected $short_code_name;
-
-	public function __construct( $code_name, $readable_name, $value ) {
-		parent::__construct( $code_name, $readable_name, $value );
-		$this->short_code_name = sanitize_title( BUSINESS_PROFILE_RENDER_NAME . ' image ' . $readable_name );
-	}
-
-	/**
-	 * Register the short code with WordPress
-	 */
-	public function register(): void {
-		add_shortcode( $this->short_code_name, array(
-			$this,
-			'get_short_code_business_profile'
-		) );
-	}
-
-	/**
-	 * This runs to render content when the short code is used on a page
-	 *
-	 * @param $atts
-	 * @param null $content
-	 * @param string $code
-	 *
-	 * @return string|void - the value stored in the business datum's setting
-	 */
-	public function get_short_code_business_profile( $atts, $content = null, $code = '' ) {
-		if ( is_feed() ) {
-			return '[' . $this->short_code_name . ']';
-		}
-
+	protected function get_render_value(): string {
 		$escaped_image         = esc_attr( $this->value );
 		$escaped_readable_name = esc_attr( $this->readable_name );
 		$class_name            = sanitize_title( BUSINESS_PROFILE_RENDER_NAME . ' ' . $this->readable_name );

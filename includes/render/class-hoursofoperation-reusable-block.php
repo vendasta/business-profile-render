@@ -18,7 +18,8 @@ class HoursOfOperationReusableBlock extends ReusableBlock {
 	 */
 	protected function block_content(): string {
 		$class_name = sanitize_title( BUSINESS_PROFILE_RENDER_NAME . ' ' . $this->readable_name );
-		$html = hours_of_operation_html($this->value, $class_name);
+		$html       = hours_of_operation_html( $this->value, $class_name );
+
 		return "<!-- wp:list -->$html<!-- /wp:list -->";
 	}
 

@@ -24,4 +24,11 @@ class City extends ProfileField {
 	protected static function readable_profile_option(): string {
 		return "City";
 	}
+
+	/**
+	 * @return string the meaningful description of this datum as read by a person
+	 */
+	protected static function readable_description(): string {
+		return "The city in which the business is located (ie 'London').";
+	}
 }
