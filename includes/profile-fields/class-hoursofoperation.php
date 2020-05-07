@@ -21,13 +21,13 @@ class HoursOfOperation extends ProfileField {
 	const public_holidays_key = "PublicHolidays";
 	const public_holidays = "Public Holidays";
 	const ordered_days = array(
-		"Sunday",
 		"Monday",
 		"Tuesday",
 		"Wednesday",
 		"Thursday",
 		"Friday",
 		"Saturday",
+		"Sunday",
 		HoursOfOperation::public_holidays
 	);
 
@@ -50,6 +50,19 @@ class HoursOfOperation extends ProfileField {
 	 */
 	protected static function readable_description(): string {
 		return "The hours of operation of the business.";
+	}
+
+	/**
+	 * @param string $input - typically a time string like "13:12:00" or "03:43:12"
+	 *
+	 * @return string - converted to more human friendly format "1:12PM" or "3:43AM"
+	 */
+	protected function format_time_string( $input ): string {
+		$d = \DateTime::createFromFormat( 'Y-m-d H:i:s', "1985-05-12 $input" );
+		if ( ! $d ) {
+			return "";
+		}
+		return $d->format( 'g:iA' );
 	}
 
 	/**
@@ -86,23 +99,5 @@ class HoursOfOperation extends ProfileField {
 			new HoursOfOperationReusableBlock( $code_name, $readable_name, $ordered_hours ),
 			new HoursOfOperationShortCode( $code_name, $readable_name, $ordered_hours ),
 		);
-	}
-
-	protected function format_time_string( $input ): string {
-		if ( $input === "" ) {
-			return "";
-		}
-		$parts = explode( ":", $input );
-		if ( count( $parts ) === 3 && end( $parts ) === "00" ) {
-			array_pop( $parts );
-		}
-		if ( (int) $parts[0] > 12 ) {
-			$parts[0] = (string) ( (int) $parts[0] - 12 );
-			$append   = "PM";
-		} else {
-			$append = "AM";
-		}
-
-		return implode( ":", $parts ) . "$append";
 	}
 }
