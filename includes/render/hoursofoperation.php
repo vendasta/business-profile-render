@@ -53,18 +53,22 @@ if ( ! function_exists( "get_list_element" ) ) {
 	function get_list_element( $class_name, $consecutive_days, $hours ): string {
 		switch ( count( $consecutive_days ) ) {
 			case 0:
-				return "";
+				$result = "";
+				break;
 			case 1:
 				$day = $consecutive_days[0];
-
-				return "<li class='li-$class_name'>" . esc_attr( "$day: $hours" ) . "</li>";
+				$result = "<li class='li-$class_name'>" . esc_attr( "$day: $hours" ) . "</li>";
+				break;
 			case 2:
-				return "<li class='li-$class_name'>" . esc_attr( implode( " & ", $consecutive_days ) . ": $hours" ) . "</li>";
+				$result = "<li class='li-$class_name'>" . esc_attr( implode( " & ", $consecutive_days ) . ": $hours" ) . "</li>";
+				break;
 			default:
 				$first_day = $consecutive_days[0];
 				$last_day  = array_pop( $consecutive_days );
 
-				return "<li class='li-$class_name'>" . esc_attr( "$first_day" . "—" . "$last_day: $hours" ) . "</li>";
+				$result = "<li class='li-$class_name'>" . esc_attr( "$first_day" . "—" . "$last_day: $hours" ) . "</li>";
+				break;
 		}
+		return $result;
 	}
 }
