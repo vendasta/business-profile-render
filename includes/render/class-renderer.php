@@ -58,9 +58,11 @@ abstract class Renderer {
 		return "
 <div class='$base_class-container'>
 	<div class='$base_class-heading'>$heading</div>
-	<div class='$base_class-instruction'>$instruction</div>
-	<div class='$base_class-render-value-container'>It's appearance depends on your theme but here it renders:<div class='$base_class-render-value'>$value</div></div>
-	<div class='$base_class-value-container'>It injects code that looks like:<pre class='$base_class-value'>$escaped_value</pre></div>
+	<div class='$base_class-body'>
+		<div class='$base_class-instruction'>$instruction</div>
+		<div class='$base_class-render-value-container'>It's appearance depends on your theme but here it renders:<div class='$base_class-render-value'>$value</div></div>
+		<div class='$base_class-value-container'>It injects code that looks like:<pre class='$base_class-value'>$escaped_value</pre></div>
+	</div>
 </div>";
 	}
 

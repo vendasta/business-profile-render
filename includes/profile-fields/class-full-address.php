@@ -3,7 +3,7 @@
 namespace BusinessProfileRender;
 
 defined( 'ABSPATH' ) || exit;
-require_once( 'class-field.php' );
+require_once( 'class-profilefield.php' );
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'render/class-full-address-short-code.php' );
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'render/class-full-address-reusable-block.php' );
 
@@ -45,11 +45,17 @@ class FullAddress extends ProfileField {
 	 * @return array - return the values from the storage class
 	 */
 	protected function get_value( $storage ) {
+		$city = $storage->get( "city" );
+		$state = $storage->get( "state" );
+		$zip = $storage->get( "zip" );
+		if( $city !== "" && $state !== ""){
+			$city_state_zip = "$city, $state $zip";
+		} else {
+			$city_state_zip = "$city$state $zip";
+		}
 		return array(
 			"address" => $storage->get( "address" ),
-			"city"    => $storage->get( "city" ),
-			"state"   => $storage->get( "state" ),
-			"zip"     => $storage->get( "zip" ),
+			"city_state_zip"    => $city_state_zip,
 			"country" => $storage->get( "country" ),
 		);
 	}

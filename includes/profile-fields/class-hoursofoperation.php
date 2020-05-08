@@ -5,7 +5,7 @@ namespace BusinessProfileRender;
 use DateTime;
 
 defined( 'ABSPATH' ) || exit;
-require_once( 'class-field.php' );
+require_once( 'class-profilefield.php' );
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'render/class-hoursofoperation-reusable-block.php' );
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'render/class-hoursofoperation-short-code.php' );
 

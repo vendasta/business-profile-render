@@ -3,7 +3,7 @@
 namespace BusinessProfileRender;
 
 defined( 'ABSPATH' ) || exit;
-require_once( 'class-field.php' );
+require_once( 'class-profilefield.php' );
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'render/class-image-short-code.php' );
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'render/class-image-reusable-block.php' );
 

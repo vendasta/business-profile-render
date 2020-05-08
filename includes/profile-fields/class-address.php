@@ -3,7 +3,7 @@
 namespace BusinessProfileRender;
 
 defined( 'ABSPATH' ) || exit;
-require_once( 'class-field.php' );
+require_once( 'class-profilefield.php' );
 
 /**
  * Class Address holds and displays the street address of the company

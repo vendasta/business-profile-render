@@ -3,7 +3,7 @@
 namespace BusinessProfileRender;
 
 defined( 'ABSPATH' ) || exit;
-require_once( 'class-field.php' );
+require_once( 'class-profilefield.php' );
 
 /**
  * Class CompanyShortDescription holds and displays the short description of the company

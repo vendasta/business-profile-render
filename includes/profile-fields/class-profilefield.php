@@ -83,8 +83,10 @@ abstract class ProfileField {
 		return "
 <div class='bpr-profile-field-instruction'>
 	$heading
-	$field_description
-	$field_options
+	<div class='bpr-profile-field-body'>
+		$field_description
+		$field_options
+	</div>
 </div>";
 	}
 
