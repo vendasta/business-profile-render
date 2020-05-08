@@ -48,7 +48,7 @@ class FullAddress extends ProfileField {
 		$city  = $storage->get( "city" );
 		$state = $storage->get( "state" );
 		$zip   = $storage->get( "zip" );
-		if ( $city !== "" && $state !== "" ) {
+		if ( is_string( $city ) && trim( $city ) !== "" && is_string( $state ) && trim( $state ) !== "" ) {
 			$city_state_zip = "$city, $state $zip";
 		} else {
 			$city_state_zip = "$city$state $zip";

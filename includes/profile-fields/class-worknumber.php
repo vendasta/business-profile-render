@@ -32,7 +32,7 @@ class WorkNumber extends ProfileField {
 	 */
 	protected function get_value( $storage ): string {
 		$work_number_array = $storage->get( static::profile_option_name() );
-		if ( count( $work_number_array ) > 0 ) {
+		if ( is_array( $work_number_array ) && count( $work_number_array ) > 0 ) {
 			return $work_number_array[0];
 		}
 

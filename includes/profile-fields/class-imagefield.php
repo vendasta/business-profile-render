@@ -43,8 +43,12 @@ abstract class ImageField extends ProfileField {
 	 */
 	protected function get_value( $storage ): string {
 		$image_arr = $storage->get( static::profile_option_name() );
+		$val       = $image_arr[ static::image_option_name() ];
+		if ( is_string( $val ) ) {
+			return $val;
+		}
 
-		return $image_arr[ static::image_option_name() ];
+		return "";
 	}
 
 	/**

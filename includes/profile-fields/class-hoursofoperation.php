@@ -62,18 +62,19 @@ class HoursOfOperation extends ProfileField {
 	 * @return Renderer[] - the renderers that need to run while initializing WP in general
 	 */
 	protected function construct_renderers( $code_name, $readable_name, $value ) {
-
 		$unordered_hours = array();
-		foreach ( $value as $entry ) {
-			$opens       = $this->format_time_string( $entry["opens"] );
-			$closes      = $this->format_time_string( $entry["closes"] );
-			$description = $entry["description"];
-			foreach ( $entry["day_of_week"] as $day ) {
-				$open_to_close = $opens === "" ? "" : "$opens-$closes";
-				if ( $day === $this::public_holidays_key ) {
-					$day = $this::public_holidays;
+		if ( is_array( $value ) ) {
+			foreach ( $value as $entry ) {
+				$opens       = $this->format_time_string( $entry["opens"] );
+				$closes      = $this->format_time_string( $entry["closes"] );
+				$description = $entry["description"];
+				foreach ( $entry["day_of_week"] as $day ) {
+					$open_to_close = $opens === "" ? "" : "$opens-$closes";
+					if ( $day === $this::public_holidays_key ) {
+						$day = $this::public_holidays;
+					}
+					$unordered_hours[ $day ] = "$open_to_close $description";
 				}
-				$unordered_hours[ $day ] = "$open_to_close $description";
 			}
 		}
 
