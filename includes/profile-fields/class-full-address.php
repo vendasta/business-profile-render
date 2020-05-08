@@ -45,18 +45,19 @@ class FullAddress extends ProfileField {
 	 * @return array - return the values from the storage class
 	 */
 	protected function get_value( $storage ) {
-		$city = $storage->get( "city" );
+		$city  = $storage->get( "city" );
 		$state = $storage->get( "state" );
-		$zip = $storage->get( "zip" );
-		if( $city !== "" && $state !== ""){
+		$zip   = $storage->get( "zip" );
+		if ( $city !== "" && $state !== "" ) {
 			$city_state_zip = "$city, $state $zip";
 		} else {
 			$city_state_zip = "$city$state $zip";
 		}
+
 		return array(
-			"address" => $storage->get( "address" ),
-			"city_state_zip"    => $city_state_zip,
-			"country" => $storage->get( "country" ),
+			"address"        => $storage->get( "address" ),
+			"city_state_zip" => $city_state_zip,
+			"country"        => $storage->get( "country" ),
 		);
 	}
 

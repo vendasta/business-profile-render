@@ -9,6 +9,28 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Release
 
+- Creates Shortcodes and Reusable Blocks for the business profile data.
 - initial release supports the following business data:
-  - Company Name
-  - TODO: fill this in
+  - CompanyName
+  - FullAddress
+  - Address
+  - City
+  - State
+  - ZipCode
+  - Country
+  - WorkNumber
+  - TollFreeNumber
+  - HoursOfOperation
+  - CompanyDescription
+  - CompanyShortDescription
+  - PrimaryImage
+  - LogoImage
+  - Services
+  - Foursquare
+  - Twitter
+  - Instagram
+  - LinkedIn
+  - Pinterest
+  - Facebook
+  - Rss
+  - YouTube

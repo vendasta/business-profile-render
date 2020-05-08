@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Business Profile Data
- * Plugin URI:
+ * Plugin URI: /wp-admin/tools.php?page=businessprofiledata
  * Description: Tool to provide utilities for displaying synchronized Business Data
  * Version:     1.0.0
  * Author:
