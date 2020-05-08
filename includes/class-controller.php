@@ -5,9 +5,11 @@ namespace BusinessProfileRender;
 defined( 'ABSPATH' ) || exit;
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'class-data-storage.php' );
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-company-name.php' );
+require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-full-address.php' );
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-address.php' );
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-city.php' );
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-state.php' );
+require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-zip.php' );
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-country.php' );
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-toll-free-number.php' );
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-foursquare.php' );
@@ -63,9 +65,11 @@ class Controller {
 		$this->registered     = false;
 		$this->profile_fields = array(
 			new CompanyName( $this->storage ),
+			new FullAddress( $this->storage ),
 			new Address( $this->storage ),
 			new City( $this->storage ),
 			new State( $this->storage ),
+			new ZipCode( $this->storage ),
 			new Country( $this->storage ),
 			new WorkNumber( $this->storage ),
 			new TollFreeNumber( $this->storage ),

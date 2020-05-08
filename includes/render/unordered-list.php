@@ -10,12 +10,12 @@ if ( ! function_exists( "unordered_list_html" ) ) {
 	function unordered_list_html( $value_array, $class_name ): string {
 		if ( is_array( $value_array ) && count( $value_array ) > 0 ) {
 			$list_elements = [];
-			foreach ( $value_array as $service ) {
-				array_push( $list_elements, "<li class='li-$class_name'>" . esc_attr( $service ) . "</li>" );
+			foreach ( $value_array as $list_element ) {
+				array_push( $list_elements, "<li class='li-$class_name'>" . esc_attr( $list_element ) . "</li>" );
 			}
 			$formatted_list_elements = implode( "\n", $list_elements );
 		} else {
-			$formatted_list_elements = "<li class='li-$class_name'>No Services Configured</li>";
+			$formatted_list_elements = "<li class='li-$class_name'>None Configured</li>";
 		}
 
 		return "<div class='div-$class_name'>\n<ul class='ul-$class_name'>\n$formatted_list_elements\n</ul>\n</div>";

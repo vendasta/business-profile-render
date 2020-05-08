@@ -2,6 +2,8 @@
 
 namespace BusinessProfileRender;
 
+use DateTime;
+
 defined( 'ABSPATH' ) || exit;
 require_once( 'class-field.php' );
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'render/class-hoursofoperation-reusable-block.php' );
@@ -53,19 +55,6 @@ class HoursOfOperation extends ProfileField {
 	}
 
 	/**
-	 * @param string $input - typically a time string like "13:12:00" or "03:43:12"
-	 *
-	 * @return string - converted to more human friendly format "1:12PM" or "3:43AM"
-	 */
-	protected function format_time_string( $input ): string {
-		$d = \DateTime::createFromFormat( 'Y-m-d H:i:s', "1985-05-12 $input" );
-		if ( ! $d ) {
-			return "";
-		}
-		return $d->format( 'g:iA' );
-	}
-
-	/**
 	 * @param string $code_name - the name of the datum to register
 	 * @param string $readable_name - the name of this datum as read by a person
 	 * @param string|null $value - the value to render
@@ -96,8 +85,22 @@ class HoursOfOperation extends ProfileField {
 		}
 
 		return array(
-			new HoursOfOperationReusableBlock( $code_name, $readable_name, $ordered_hours ),
 			new HoursOfOperationShortCode( $code_name, $readable_name, $ordered_hours ),
+			new HoursOfOperationReusableBlock( $code_name, $readable_name, $ordered_hours ),
 		);
+	}
+
+	/**
+	 * @param string $input - typically a time string like "13:12:00" or "03:43:12"
+	 *
+	 * @return string - converted to more human friendly format "1:12PM" or "3:43AM"
+	 */
+	protected function format_time_string( $input ): string {
+		$d = DateTime::createFromFormat( 'Y-m-d H:i:s', "1985-05-12 $input" );
+		if ( ! $d ) {
+			return "";
+		}
+
+		return $d->format( 'g:iA' );
 	}
 }

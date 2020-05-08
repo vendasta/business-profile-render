@@ -49,16 +49,18 @@ abstract class Renderer {
 	abstract public function register(): void;
 
 	public function get_usage_html(): string {
-		$base_class  = "bpr-usage";
-		$heading     = $this->get_usage_heading();
-		$instruction = $this->get_instruction_html();
-		$value       = $this->get_render_value();
+		$base_class    = "bpr-usage";
+		$heading       = $this->get_usage_heading();
+		$instruction   = $this->get_instruction_html();
+		$value         = $this->get_render_value();
+		$escaped_value = esc_attr( $value );
 
 		return "
 <div class='$base_class-container'>
 	<div class='$base_class-heading'>$heading</div>
 	<div class='$base_class-instruction'>$instruction</div>
-	<div class='$base_class-value-container'>It will render:<div class='$base_class-value'>$value</div></div>
+	<div class='$base_class-render-value-container'>It's appearance depends on your theme but here it renders:<div class='$base_class-render-value'>$value</div></div>
+	<div class='$base_class-value-container'>It injects code that looks like:<pre class='$base_class-value'>$escaped_value</pre></div>
 </div>";
 	}
 
