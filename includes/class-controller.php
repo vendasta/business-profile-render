@@ -3,6 +3,7 @@
 namespace BusinessProfileRender;
 
 defined( 'ABSPATH' ) || exit;
+require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'access-control.php' );
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'class-data-storage.php' );
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-company-name.php' );
 require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'profile-fields/class-address.php' );
@@ -140,7 +141,7 @@ class Controller {
 			"tools.php",
 			BUSINESS_PROFILE_RENDER_NAME,
 			BUSINESS_PROFILE_RENDER_NAME,
-			"edit_posts",
+			admin_sub_tab_visible_capability(),
 			sanitize_key( BUSINESS_PROFILE_RENDER_NAME ),
 			array( $this, 'sub_tab_html' ),
 			null );
