@@ -47,10 +47,11 @@ class LinkedImageReusableBlock extends ReusableBlock {
 		$class_name            = sanitize_title( BUSINESS_PROFILE_RENDER_NAME . ' ' . $this->readable_name );
 		$escaped_style         = esc_attr( $this->image_styles );
 
+        $dashed_code_name =  str_replace('_', '-', $this->code_name);
 		return "
-<!-- wp:image -->
-	<figure class=\"wp-block-image figure_$class_name\"><a class=\"a_$class_name\" href=\"$escaped_link\" rel=\"$escaped_link\"><img src=\"$escaped_image\" alt=\"link to $escaped_readable_name\" style=\"$escaped_style\"/></a></figure>
-<!-- /wp:image -->";
+<!-- wp:shortcode -->
+	[business-profile-data-image-link-$dashed_code_name]
+<!-- /wp:shortcode -->";
 	}
 
 	/**

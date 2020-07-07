@@ -18,6 +18,7 @@ if ( ! function_exists( "unordered_list_html" ) ) {
 			$formatted_list_elements = "<li class='li-$class_name'>None Configured</li>";
 		}
 
-		return "<div class='div-$class_name'>\n<ul class='ul-$class_name'>\n$formatted_list_elements\n</ul>\n</div>";
+//		return "<div class='div-$class_name'>\n<ul class='ul-$class_name'>\n$formatted_list_elements\n</ul>\n</div>";
+		return "<ul class='ul-$class_name'>\n$formatted_list_elements\n</ul>";
 	}
 }
