@@ -50,7 +50,7 @@ abstract class ReusableBlock extends Renderer {
                 array(
                     'name'         => 'fixed-size-linked-img',
                     'label'        => 'image',
-                    'inline_style' => 'img { height:50px; width: 50px; }'
+                    'inline_style' => 'img { height:32px; width: 32px; }'
                 )
             );
 		}
