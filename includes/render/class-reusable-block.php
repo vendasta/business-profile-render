@@ -45,6 +45,14 @@ abstract class ReusableBlock extends Renderer {
 					$title
 				)
 			) );
+            register_block_style(
+                'core/image',
+                array(
+                    'name'         => 'fixed-size-linked-img',
+                    'label'        => 'image',
+                    'inline_style' => 'img { height:50px; width: 50px; }'
+                )
+            );
 		}
 	}
 
