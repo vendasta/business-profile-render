@@ -73,8 +73,9 @@ class HoursOfOperation extends ProfileField {
 					if ( $day === $this::public_holidays_key ) {
 						$day = $this::public_holidays;
 					}
-					$unordered_hours[ $day ] = "$open_to_close $description";
-				}
+                    $unordered_hours[ $day ] = $unordered_hours[ $day ] . ", " . "$open_to_close $description";
+
+                }
 			}
 		}
 
