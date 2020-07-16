@@ -28,7 +28,7 @@ class UnorderedListReusableBlock extends ReusableBlock {
 		}
 
 		return "<!-- wp:list -->
-<ul class='ul-$class_name'>$formatted_list_elements</ul>
+<ul class='ul-$class_name' style='padding-left: 0px; list-style: none;'>$formatted_list_elements</ul>
 <!-- /wp:list -->";
 	}
 

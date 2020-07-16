@@ -37,7 +37,7 @@ if ( ! function_exists( "hours_of_operation_html" ) ) {
 			$formatted_list_elements = "<li class='li-$class_name'>Missing Hours of Operation</li>";
 		}
 
-		return "<ul class='ul-$class_name'>$formatted_list_elements</ul>";
+		return "<ul class='ul-$class_name' style='padding-left: 0px; list-style: none;'>$formatted_list_elements</ul>";
 	}
 }
 
