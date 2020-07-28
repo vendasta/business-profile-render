@@ -1,9 +1,9 @@
 <?php
 /**
  * Plugin Name: Business Profile Data
- * Plugin URI: /wp-admin/tools.php?page=businessprofiledata
+ * Plugin URI: https://github.com/vendasta/business-profile-render
  * Description: Tool to provide utilities for displaying synchronized Business Data
- * Version:     1.0.1
+ * Version: 1.0.1
  * Author:
  * Author URI:
  * License:
