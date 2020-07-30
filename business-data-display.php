@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Business Profile Data
+ * Plugin Name: Business Profile Render
  * Plugin URI: https://github.com/vendasta/business-profile-render/
  * Description: Tool to provide utilities for displaying synchronized business profile data
  * Version: 1.0.1
