@@ -18,6 +18,7 @@ class Updater {
     public static function load() {
         add_filter( 'pre_set_site_transient_update_plugins', array( __CLASS__, 'transient_update_plugins' ), 20, 1 );
         add_filter( 'plugins_api', array( __CLASS__, 'plugins_api' ), 20, 3 );
+        add_filter( 'upgrader_post_install', array( __CLASS__, 'upgrader_post_install' ), 20, 3 );
     }
 
     // Triggered when WordPress checks for plugin updates.
@@ -57,6 +58,7 @@ class Updater {
                 'author_profile'    => $plugin['AuthorURI'],
                 'basename'          => BUSINESS_PROFILE_RENDER_PLUGIN_FILE,
                 'description'       => $plugin['Description'],
+                'dir_path'          => BUSINESS_PROFILE_RENDER_PATH,
                 'name'              => $plugin['Name'],
                 'slug'              => current( explode( '/', BUSINESS_PROFILE_RENDER_PLUGIN_FILE ) ),
                 'url'               => $plugin['PluginURI'],
@@ -120,5 +122,17 @@ class Updater {
             'slug'              => $plugin->slug,
             'version'           => $release['version'],
         );
+    }
+
+    // Filters the installation response after the installation has finished.
+    //
+    public static function upgrader_post_install( $response, $hook_extra, $result ) {
+        global $wp_filesystem;
+
+        $plugin = static::get_plugin_data();
+        $wp_filesystem->move( $result['destination'], $plugin->dir_path );
+        $result['destination'] = $plugin->dir_path;
+
+        return $result;
     }
 }
