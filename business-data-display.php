@@ -21,7 +21,6 @@ define( 'BUSINESS_PROFILE_RENDER_FILE', __FILE__ );
 $plugin_data = get_plugin_data( BUSINESS_PROFILE_RENDER_FILE );
 define( 'BUSINESS_PROFILE_RENDER_VERSION', $plugin_data['Version'] );
 define( 'BUSINESS_PROFILE_RENDER_NAME', $plugin_data['Name'] );
-define( 'BUSINESS_PROFILE_RENDER_PLUGIN_URI', $plugin_data['PluginURI'] );
 define( 'BUSINESS_PROFILE_RENDER_PLUGIN_FILE', plugin_basename( BUSINESS_PROFILE_RENDER_FILE ) );
 define( 'BUSINESS_PROFILE_RENDER_PATH', plugin_dir_path( BUSINESS_PROFILE_RENDER_FILE ) );
 define( 'BUSINESS_PROFILE_RENDER_INCLUDE_PATH', BUSINESS_PROFILE_RENDER_PATH . 'includes/' );
