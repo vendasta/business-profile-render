@@ -16,13 +16,38 @@ class Updater {
     // Loads the updater.
     //
     public static function load() {
-        add_action( 'pre_set_site_transient_update_plugins', array( __CLASS__, 'transient_update_plugins' ), 20, 1 );
+        add_filter( 'pre_set_site_transient_update_plugins', array( __CLASS__, 'transient_update_plugins' ), 20, 1 );
+    }
+
+    // Triggered when WordPress checks for plugin updates.
+    //
+    public static function transient_update_plugins( $transient ) {
+        $plugin_file = BUSINESS_PROFILE_RENDER_PLUGIN_FILE;
+        $release = static::get_latest_release();
+
+        $plugin = (object) array(
+            'new_version'   => $release['version'],
+            'package'       => $release['package'],
+            'plugin'        => $plugin_file,
+            'slug'          => current( explode( '/', $plugin_file ) ),
+            'url'           => BUSINESS_PROFILE_RENDER_PLUGIN_URI,
+        );
+
+        if ( version_compare( BUSINESS_PROFILE_RENDER_VERSION, $release['version'], '<' ) ) {
+            $transient->response[ $plugin_file ] = $plugin;
+            unset( $transient->no_update[ $plugin_file ] );
+        } else {
+            $transient->no_update[ $plugin_file ] = $plugin;
+            unset( $transient->response[ $plugin_file ] );
+        }
+
+        return $transient;
     }
 
     // Retrieves information of the latest release of the plugin.
     //
     protected static function get_latest_release() {
-        $cache_key = '_business_profile_render_update';
+        $cache_key = '_business_profile_render_latest_release';
         if ( $data = get_transient( $cache_key ) ) {
             return $data;
         }
