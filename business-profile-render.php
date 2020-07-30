@@ -41,7 +41,7 @@ function business_profile_render_plugin() {
 	if ( is_admin() ) {
 		$instance->add_admin_tab_action();
 
-        require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'class-updater.php' );
+		require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'class-updater.php' );
 		Updater::load();
 	}
 
