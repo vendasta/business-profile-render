@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name: Business Profile Data
- * Plugin URI: https://github.com/vendasta/business-profile-render
- * Description: Tool to provide utilities for displaying synchronized Business Data
+ * Plugin URI: https://github.com/vendasta/business-profile-render/
+ * Description: Tool to provide utilities for displaying synchronized business profile data
  * Version: 1.0.1
- * Author:
- * Author URI:
+ * Author: Website Pro Team
+ * Author URI: https://github.com/vendasta/
  * License:
  * License URI:
  * Text Domain:
