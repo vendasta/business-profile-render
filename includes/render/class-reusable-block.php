@@ -45,6 +45,9 @@ abstract class ReusableBlock extends Renderer {
 					$title
 				)
 			) );
+            if ( ! function_exists('register_block_style' ) ) {
+                return;
+            }
             register_block_style(
                 'core/image',
                 array(
