@@ -50,7 +50,7 @@ class LinkedImageReusableBlock extends ReusableBlock {
         $dashed_code_name =  str_replace('_', '-', $this->code_name);
 		return "
 <!-- wp:image -->
-	<figure class=\"wp-block-image figure_$class_name fixed-size-linked-img\"><a href=\"$escaped_link\"><img src=\"$escaped_image\" alt=\"link to $escaped_readable_name\"/></a></figure>
+	<figure class=\"wp-block-image figure_$class_name fixed-size-linked-img\"><a href=\"$escaped_link\"><img style=\"width: 32px; height: 32px;\" src=\"$escaped_image\" alt=\"link to $escaped_readable_name\"/></a></figure>
 <!-- /wp:image -->";
 	}
 
