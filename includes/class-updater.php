@@ -70,7 +70,7 @@ class Updater {
     // Retrieves information of the latest release of the plugin.
     //
     protected static function get_latest_release() {
-        $cache_key = '_business_profile_render_latest_release';
+        $cache_key = 'business_profile_render_latest_release';
         if ( $data = get_transient( $cache_key ) ) {
             return $data;
         }
