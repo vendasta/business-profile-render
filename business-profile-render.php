@@ -1,11 +1,11 @@
 <?php
 /**
- * Plugin Name: Business Profile Data
- * Plugin URI: /wp-admin/tools.php?page=businessprofiledata
- * Description: Tool to provide utilities for displaying synchronized Business Data
- * Version:     1.0.1
- * Author:
- * Author URI:
+ * Plugin Name: Business Profile Render
+ * Plugin URI: https://github.com/vendasta/business-profile-render/
+ * Description: Tool to provide utilities for displaying synchronized business profile data
+ * Version: 1.1.0
+ * Author: Website Pro Team
+ * Author URI: https://github.com/vendasta/
  * License:
  * License URI:
  * Text Domain:
@@ -40,6 +40,9 @@ function business_profile_render_plugin() {
 	$instance->register_hooks();
 	if ( is_admin() ) {
 		$instance->add_admin_tab_action();
+
+		require_once( BUSINESS_PROFILE_RENDER_INCLUDE_PATH . 'class-updater.php' );
+		Updater::load();
 	}
 
 	return $instance;
