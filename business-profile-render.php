@@ -3,7 +3,7 @@
  * Plugin Name: Business Profile Render
  * Plugin URI: https://github.com/vendasta/business-profile-render/
  * Description: Tool to provide utilities for displaying synchronized business profile data
- * Version: 1.1.0
+ * Version: 1.2.0
  * Author: Website Pro Team
  * Author URI: https://github.com/vendasta/
  * License:
