@@ -135,6 +135,7 @@ class Controller {
 	public function add_admin_tab_action(): void {
 		add_action( 'admin_menu', array( $this, 'add_admin_tab' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'add_admin_instruction_styles' ) );
+		add_filter( 'plugin_row_meta', array( $this, 'plugin_row_meta' ), 10, 2 );
 	}
 
 	/**
@@ -171,5 +172,27 @@ and reusable <a href='https://wordpress.org/support/article/blocks/'>Blocks</a>.
 	 */
 	public function add_admin_instruction_styles(): void {
 		wp_enqueue_style( 'admin-styles', BUSINESS_PROFILE_RENDER_WEB_PATH_PUBLIC . '/styles/admin-instruction.css' );
+	}
+
+	/**
+	 * Show row meta on the plugin screen.
+	 *
+	 * @param mixed $links Plugin Row Meta.
+	 * @param mixed $file  Plugin Base file.
+	 *
+	 * @return array
+	 */
+	public function plugin_row_meta( $links, $file ) {
+		if ( BUSINESS_PROFILE_RENDER_PLUGIN_FILE !== $file ) {
+			return (array) $links;
+		}
+
+		$href = esc_url( admin_url( 'tools.php?page=businessprofilerender' ) );
+		$aria_label = esc_attr__( 'View plugin usage', 'businessprofilerender' );
+		$label = esc_html__( 'Usage', 'businessprofilerender' );
+		$meta = array(
+			'usage' => "<a href=\"$href\" aria-label=\"$aria_label\">$label</a>"
+		);
+		return array_merge( $links, $meta );
 	}
 }
