@@ -16,6 +16,7 @@
  * "state": "NY",
  * "zip": "10001",
  * "country": "US",
+ * "contact_email": "email@email.com",
  * "work_number": [
  * "234-567-8901",
  * "(432) 343-2132",

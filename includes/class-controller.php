@@ -65,6 +65,7 @@ class Controller {
 		$this->storage        = DataStorage::instance();
 		$this->registered     = false;
 		$this->profile_fields = array(
+		    new ContactEmail( $this->storage ),
 			new CompanyName( $this->storage ),
 			new FullAddress( $this->storage ),
 			new Address( $this->storage ),
