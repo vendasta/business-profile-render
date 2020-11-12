@@ -6,8 +6,7 @@ defined( 'ABSPATH' ) || exit;
 require_once( 'class-profilefield.php' );
 
 /**
- * Class ContactEmail holds and displays the name of the company
- * Like "Business Incorporated"
+ * Class ContactEmail holds and displays the contact email of the company
  */
 class ContactEmail extends ProfileField {
 
