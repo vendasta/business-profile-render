@@ -155,7 +155,9 @@ const settings = {
         value: opt.value
       })),
       onChange: onChangeOption
-    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Preview:", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("br", null), " ", option));
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+      class: "css-1imalal"
+    }, "Preview:"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("br", null), option));
   },
   // Save function for the block
   save: ({

@@ -48,7 +48,7 @@ const settings = {
                     options={options.map(opt => ({ label: opt.label, value: opt.value }))}
                     onChange={onChangeOption}
                 />
-                <p>Preview:<br/> {option}</p>
+                <p><span class="css-1imalal">Preview:</span><br/>{option}</p>
             </div>
         );
     },
