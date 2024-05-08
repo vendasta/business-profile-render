@@ -1,0 +1,37 @@
+.bpr-profile-field-heading {
+    font-size: 2em;
+}
+
+.bpr-profile-field-option-container {
+    display: flex;
+}
+
+.bpr-usage-container {
+    background: white;
+    margin: 5px;
+    border: 1px solid lightgrey;
+}
+
+
+.bpr-usage-heading {
+    font-size: 1.5em;
+    border-bottom: 1px solid lightgrey;
+    padding: 10px;
+}
+
+.bpr-usage-body {
+    padding: 10px;
+}
+
+.bpr-usage-instruction {
+    min-height: 80px;
+    width: 500px;
+}
+
+.bpr-usage-value {
+    background: black;
+    color: #7e57c2;
+    width: 500px;
+    padding: 10px;
+    white-space: pre-wrap;
+}
