@@ -4,6 +4,7 @@
 /docs/
 /node_modules/
 /vendor/
+/build/
 
 # OS generated files #
 ######################
