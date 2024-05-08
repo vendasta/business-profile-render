@@ -1,131 +1,68 @@
+// Import necessary components and hooks
 const { registerBlockType } = wp.blocks;
+const { SelectControl } = wp.components;
 const { useState, useEffect } = wp.element;
-const { ToggleControl, PanelBody, PanelRow } = wp.components;
-const { InspectorControls } = wp.blockEditor;
-const { __ } = wp.i18n;
 
-registerBlockType('rajan-vijayan/my-block', {
-    title: __('My Block', 'rajan-vijayan'),
+// Define the block settings
+const settings = {
+    title: 'Business Profile',
     icon: 'admin-site',
     category: 'common',
+    attributes: {
+        option: {
+            type: 'string',
+            default: '--',
+        },
+    },
 
-    edit: ({ className, attributes, setAttributes }) => {
-        const [data, setData] = useState(attributes.data);
-        const [columnVisibility, setColumnVisibility] = useState(attributes.columnVisibility);
-        const [loading, setLoading] = useState(true);
-        const [error, setError] = useState(null);
+    // Edit function for the block
+    edit: (props) => {
+        const { attributes, setAttributes } = props;
+        const { option } = attributes;
+        const [options, setOptions] = useState([]);
 
+        // Fetch options from the server when component mounts
         useEffect(() => {
-            fetchData();
-        }, []);
+            // Extract options from the server-provided data
+            const businessProfileData = window.businessProfileData || {}; // Access data passed from PHP
+            //const profileOptions = Object.keys(businessProfileData);
 
-        const fetchData = () => {
-            jQuery.ajax({
-                url: myplugin_ajax_object.ajax_url,
-                type: 'GET',
-                data: {
-                    action: 'my_plugin_fetch_data', // AJAX action hook
-                    nonce: myplugin_ajax_object.security // Nonce for security
-                },
-                success: function (response) {
-                    console.log(response);
-                    setLoading(false);
-                    setData(response.data);
-                    setError(null);
-                },
-                error: function (xhr, status, error) {
-                    setLoading(false);
-                    setError(xhr.responseText || error);
-                },
+            const profileOptions = Object.entries(businessProfileData).map(([key, value]) => {
+                return { label: key, value: value };
             });
+
+            setOptions(profileOptions);
+        }, []); // Run once when component mounts
+
+        // Handler for option change
+        const onChangeOption = (newOption) => {
+            setAttributes({ option: newOption });
         };
 
-        const toggleColumnVisibility = (columnName) => {
-            const newState = {
-                ...columnVisibility,
-                [columnName]: !columnVisibility[columnName],
-            };
-            setColumnVisibility(newState);
-            // Update the block's attributes with the new columnVisibility state
-            setAttributes({ columnVisibility: newState });
-        };
-
-        if (loading) {
-            return <div className={className}>{__('Loading...', 'miusage-plugin')}</div>;
-        }
-
-        if (error) {
-            return <div className={className}>{__('Error: Unable to fetch data', 'miusage-plugin')}</div>;
-        }
-
+        // Render the block in the editor
         return (
-            <div className={className}>
-                <InspectorControls>
-                    <PanelBody title='Toggle'>
-                        {Object.keys(columnVisibility).map((columnName) => (
-                            <PanelRow key={`panel_${columnName}`}>
-                                <ToggleControl label={columnName} checked={columnVisibility[columnName]} onChange={() => toggleColumnVisibility(columnName)} />
-                            </PanelRow>
-                        ))}
-                    </PanelBody>
-                </InspectorControls>
-                <div className='miusage-table-wrapper' dangerouslySetInnerHTML={{ __html: generateTableHTML(data, columnVisibility) }} />
+            <div>
+                <SelectControl
+                    label="Select which field you want to show"
+                    value={option}
+                    options={options.map(opt => ({ label: opt.label, value: opt.value }))}
+                    onChange={onChangeOption}
+                />
+                <p>Preview:<br/> {option}</p>
             </div>
         );
     },
 
-    save: () => {
-        return null; // Save function is not used as the table is generated dynamically in the frontend
+    // Save function for the block
+    save: ({ attributes }) => {
+        const { option } = attributes;
+        return (
+            <div>
+                <p>{option}</p>
+            </div>
+        );
     },
-
-    attributes: {
-        data: {
-            type: 'object',
-            default: null,
-        },
-        columnVisibility: {
-            type: 'object',
-            default: {
-                id: true,
-                fname: true,
-                lname: true,
-                email: true,
-                date: true,
-            },
-        },
-    },
-});
-
-const generateTableHTML = (data, columnVisibility) => {
-    if (!data) {
-        return 'Empty'; // Return empty string if data is not available
-    }
-
-    // Generate HTML markup for the table
-    let tableHTML = `
-        <table class="miusage-table">
-            <thead>
-                <tr>
-                    ${Object.keys(data.data.headers)
-                        .map((header) => (columnVisibility[header] ? `<th>${data.headers[header]}</th>` : ''))
-                        .join('')}
-                </tr>
-            </thead>
-            <tbody>
-                ${Object.values(data.data.rows)
-                    .map(
-                        (row) => `
-                    <tr>
-                        ${Object.keys(row)
-                            .map((columnName) => (columnVisibility[columnName] ? `<td>${row[columnName]}</td>` : ''))
-                            .join('')}
-                    </tr>
-                `
-                    )
-                    .join('')}
-            </tbody>
-        </table>
-    `;
-
-    return tableHTML;
 };
+
+// Register the block type with the defined settings
+registerBlockType('business-profile-render/bpr-block', settings);

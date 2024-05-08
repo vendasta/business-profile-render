@@ -90,143 +90,86 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
+// Import necessary components and hooks
 const {
   registerBlockType
 } = wp.blocks;
 const {
+  SelectControl
+} = wp.components;
+const {
   useState,
   useEffect
 } = wp.element;
-const {
-  ToggleControl,
-  PanelBody,
-  PanelRow
-} = wp.components;
-const {
-  InspectorControls
-} = wp.blockEditor;
-const {
-  __
-} = wp.i18n;
-registerBlockType('rajan-vijayan/my-block', {
-  title: __('My Block', 'rajan-vijayan'),
+
+// Define the block settings
+const settings = {
+  title: 'Business Profile',
   icon: 'admin-site',
   category: 'common',
-  edit: ({
-    className,
-    attributes,
-    setAttributes
-  }) => {
-    const [data, setData] = useState(attributes.data);
-    const [columnVisibility, setColumnVisibility] = useState(attributes.columnVisibility);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-    useEffect(() => {
-      fetchData();
-    }, []);
-    const fetchData = () => {
-      jQuery.ajax({
-        url: myplugin_ajax_object.ajax_url,
-        type: 'GET',
-        data: {
-          action: 'my_plugin_fetch_data',
-          // AJAX action hook
-          nonce: myplugin_ajax_object.security // Nonce for security
-        },
-        success: function (response) {
-          console.log(response);
-          setLoading(false);
-          setData(response.data);
-          setError(null);
-        },
-        error: function (xhr, status, error) {
-          setLoading(false);
-          setError(xhr.responseText || error);
-        }
-      });
-    };
-    const toggleColumnVisibility = columnName => {
-      const newState = {
-        ...columnVisibility,
-        [columnName]: !columnVisibility[columnName]
-      };
-      setColumnVisibility(newState);
-      // Update the block's attributes with the new columnVisibility state
-      setAttributes({
-        columnVisibility: newState
-      });
-    };
-    if (loading) {
-      return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-        className: className
-      }, __('Loading...', 'miusage-plugin'));
-    }
-    if (error) {
-      return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-        className: className
-      }, __('Error: Unable to fetch data', 'miusage-plugin'));
-    }
-    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: className
-    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-      title: "Toggle"
-    }, Object.keys(columnVisibility).map(columnName => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelRow, {
-      key: `panel_${columnName}`
-    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-      label: columnName,
-      checked: columnVisibility[columnName],
-      onChange: () => toggleColumnVisibility(columnName)
-    }))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "miusage-table-wrapper",
-      dangerouslySetInnerHTML: {
-        __html: generateTableHTML(data, columnVisibility)
-      }
-    }));
-  },
-  save: () => {
-    return null; // Save function is not used as the table is generated dynamically in the frontend
-  },
   attributes: {
-    data: {
-      type: 'object',
-      default: null
-    },
-    columnVisibility: {
-      type: 'object',
-      default: {
-        id: true,
-        fname: true,
-        lname: true,
-        email: true,
-        date: true
-      }
+    option: {
+      type: 'string',
+      default: '--'
     }
-  }
-});
-const generateTableHTML = (data, columnVisibility) => {
-  if (!data) {
-    return 'Empty'; // Return empty string if data is not available
-  }
+  },
+  // Edit function for the block
+  edit: props => {
+    const {
+      attributes,
+      setAttributes
+    } = props;
+    const {
+      option
+    } = attributes;
+    const [options, setOptions] = useState([]);
 
-  // Generate HTML markup for the table
-  let tableHTML = `
-        <table class="miusage-table">
-            <thead>
-                <tr>
-                    ${Object.keys(data.data.headers).map(header => columnVisibility[header] ? `<th>${data.headers[header]}</th>` : '').join('')}
-                </tr>
-            </thead>
-            <tbody>
-                ${Object.values(data.data.rows).map(row => `
-                    <tr>
-                        ${Object.keys(row).map(columnName => columnVisibility[columnName] ? `<td>${row[columnName]}</td>` : '').join('')}
-                    </tr>
-                `).join('')}
-            </tbody>
-        </table>
-    `;
-  return tableHTML;
+    // Fetch options from the server when component mounts
+    useEffect(() => {
+      // Extract options from the server-provided data
+      const businessProfileData = window.businessProfileData || {}; // Access data passed from PHP
+      //const profileOptions = Object.keys(businessProfileData);
+
+      const profileOptions = Object.entries(businessProfileData).map(([key, value]) => {
+        return {
+          label: key,
+          value: value
+        };
+      });
+      setOptions(profileOptions);
+    }, []); // Run once when component mounts
+
+    // Handler for option change
+    const onChangeOption = newOption => {
+      setAttributes({
+        option: newOption
+      });
+    };
+
+    // Render the block in the editor
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
+      label: "Select which field you want to show",
+      value: option,
+      options: options.map(opt => ({
+        label: opt.label,
+        value: opt.value
+      })),
+      onChange: onChangeOption
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Preview:", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("br", null), " ", option));
+  },
+  // Save function for the block
+  save: ({
+    attributes
+  }) => {
+    const {
+      option
+    } = attributes;
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, option));
+  }
 };
+
+// Register the block type with the defined settings
+registerBlockType('business-profile-render/bpr-block', settings);
 })();
 
 /******/ })()
