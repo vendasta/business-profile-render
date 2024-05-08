@@ -18,4 +18,4 @@ require_once __DIR__ . '/vendor/autoload.php';
 require_once plugin_dir_path( __FILE__ ) . 'src/Admin/AdminNotice.php';
 // require_once plugin_dir_path( __FILE__ ) . 'src/Shortcode/Shortcode.php';
 // require_once plugin_dir_path( __FILE__ ) . 'src/Blocks/GutenbergBlock.php';
-require_once plugin_dir_path( __FILE__ ) . 'src/Blocks/Deprecated.php';
+require_once plugin_dir_path( __FILE__ ) . 'src/Deprecated/Deprecated.php';
