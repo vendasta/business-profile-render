@@ -62,6 +62,7 @@ class Deprecated {
         });
     }
 
+    
     public static function business_profile_data_full_address() {
         $address = "";
         $full_address = array("address", "city", "state", "zip", "country");
