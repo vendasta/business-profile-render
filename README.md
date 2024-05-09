@@ -13,6 +13,52 @@ The hosting platform syncs the relevant business information to the WP Options t
 This plugin provides ways to automatically render this information on your site.
 
 This includes both [Shortcodes](https://codex.wordpress.org/Shortcode) and [Gutenberg Components](https://developer.wordpress.org/block-editor/reference-guides/components/).
+### Shortcodes
+
+#### How to use this shortcode
+
+To utilize this shortcode, follow the format below:
+
+**[business_profile attr="company_name"]**
+
+Here, the `attr` parameter specifies the attribute you want to display. Replace `"company_name"` with the desired attribute you wish to retrieve from the business profile.
+
+**For example:** if you want to display the company's name, you would use `"company_name"` as the attribute value. Similarly, you can replace it with other attributes such as address, phone number, or any other pertinent information stored in the business profile.
+
+Make sure to enclose the attribute name within double quotation marks (" "). This ensures that the shortcode accurately identifies the attribute you intend to retrieve.
+
+| Shortcode | Attribute | Preview |
+|--|--|--|
+|`[business_profile]`| company_name | ABC Media Pvt Ltd |
+|`[business_profile]`| description | |
+|`[business_profile]`| short_description |  |
+|`[business_profile]`| services_offered |  |
+|`[business_profile]`| contact_first_name |  |
+|`[business_profile]`| contact_last_name |  |
+|`[business_profile]`| contact_email |hello@abcmedia.com |
+|`[business_profile]`| cell_number |  |
+|`[business_profile]`| fax_number |  |
+|`[business_profile]`| toll_free_number |  |
+|`[business_profile]`| work_number | '+99 879 00 12 12' |
+|`[business_profile]`| address | 123 4th Street |
+|`[business_profile]`| city | Fairbanks |
+|`[business_profile]`| state | Alaska |
+|`[business_profile]`| country | United States |
+|`[business_profile]`| zip | 99654 |
+|`[business_profile]`| time_zone |  |
+|`[business_profile]`| longitude | -1.8769149 |
+|`[business_profile]`| latitude | 37.1418673 |
+|`[business_profile]`| hours_of_operation |  |
+|`[business_profile]`| rss_url |  |
+|`[business_profile]`| twitter_url |  |
+|`[business_profile]`| foursquare_url |  |
+|`[business_profile]`| facebook_url |  |
+|`[business_profile]`| youtube_url |  |
+|`[business_profile]`| instagram_url |  |
+|`[business_profile]`| pinterest_url |  |
+|`[business_profile]`| linkedin_url |  |
+|`[business_profile]`| tax_ids |  |
+
 
 ### Old Shortcodes
 
@@ -41,3 +87,27 @@ This includes both [Shortcodes](https://codex.wordpress.org/Shortcode) and [Gute
 |`[business-profile-render-image-link-facebook-url]`||
 |`[business-profile-render-image-link-rss-url]`||
 |`[business-profile-render-image-link-youtube-url]`||
+
+## Developer Notes
+
+### Requirements
+| Tools | Documentation | Recomended Version |
+|--|--|--|
+| Node js | [Doc](https://nodejs.org/en/download/current) | 8.15.x |
+| NPM | [Doc](https://www.npmjs.com/package/download) | 16.17.x |
+| Composer | [Doc](https://getcomposer.org/download/) | 2.7.x |
+| Gulpjs | [Doc](https://gulpjs.com/docs/en/getting-started/quick-start/) | 4.0.x |
+| wp-cli | [Doc](https://make.wordpress.org/cli/handbook/guides/installing/) | Latest |
+
+### How to install in Local environment
+
+Before proceeding, ensure you have installed all the necessary tools mentioned above. Once done, follow the steps below:
+
+1. Clone the plugin from the [git repository](https://github.com/vendasta/business-profile-render/) to your WordPress plugin directory. This directory is typically located at /wp-content/plugins/.
+2. Replace `/wp-content/plugins/business-profile-render` with the correct path to your WordPress plugins directory if it differs.
+3. After cloning the repository, navigate to your WordPress admin dashboard.
+4. Go to the Plugins section.
+5. Locate the "Business Profile Render" plugin in the list.
+6. Click on the "Activate" link below the plugin name to activate it.
+
+Once activated, the plugin will be ready for use on your WordPress site.
