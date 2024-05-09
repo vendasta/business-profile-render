@@ -11,6 +11,9 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 
+define( 'BUSINESS_PROFILE_RENDER_OPTION', 'bpr_business_profile' );
+define( 'BUSINESS_PROFILE_RENDER_DEFAULT_OPTION', 'company_name' );
+
 // Load Composer autoloader
 require_once __DIR__ . '/vendor/autoload.php'; 
 
