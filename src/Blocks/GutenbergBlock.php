@@ -11,27 +11,33 @@ class GutenbergBlock {
 
     public static function register_block() {
 
-        // Register the block script
-        wp_register_script(
-            'business-profile-render-gutenberg-block',
-            plugin_dir_url( __FILE__ ) . '../../build/gutenberg-block.js',
-            array('wp-blocks', 'wp-element', 'wp-components'),
-            filemtime( plugin_dir_path( __FILE__ ) . '../../build/gutenberg-block.js' ),
-            true
-        );
-
-        // Fetch JSON data and pass it to the block script
+        // Fetch JSON data
         $business_profile_data = get_option('bpr_business_profile');
-        wp_localize_script(
-            'business-profile-render-gutenberg-block',
-            'businessProfileData',
-            self::preprocess_business_profile_data( $business_profile_data )
-        );
 
+        // Check if $business_profile_data is not empty
+        if (!empty($business_profile_data)) {
+            // Register the block script
+            wp_register_script(
+                'business-profile-render-gutenberg-block',
+                plugin_dir_url(__FILE__) . '../../build/gutenberg-block.js',
+                array('wp-blocks', 'wp-element', 'wp-components'),
+                filemtime(plugin_dir_path(__FILE__) . '../../build/gutenberg-block.js'),
+                true
+            );
 
-        register_block_type('business-profile-render/bpr-block', array(
-            'editor_script' => 'business-profile-render-gutenberg-block'
-        ));
+            // Localize the block script with preprocessed data
+            wp_localize_script(
+                'business-profile-render-gutenberg-block',
+                'businessProfileData',
+                self::preprocess_business_profile_data($business_profile_data)
+            );
+
+            // Register the block type
+            register_block_type('business-profile-render/bpr-block', array(
+                'editor_script' => 'business-profile-render-gutenberg-block'
+            ));
+        }
+
 
     }
 
@@ -49,7 +55,7 @@ class GutenbergBlock {
     
             // If the value is empty, set it to "No data available"
             if (empty($value)) {
-                $processed_value = "No data available";
+                $processed_value = __("No data available", 'business-profile-render');
             } else {
                 // If the value is an array, implode it with ","
                 if (is_array($value)) {
