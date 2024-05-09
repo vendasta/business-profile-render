@@ -2,9 +2,10 @@
     "name": "business-profile-render",
     "version": "1.5.0",
     "description": "Tool to provide utilities for displaying synchronized business profile data",
-    "main": "index.php",
+    "main": "assets/js/gutenberg-block.js",
     "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1"
+      "build:scripts": "wp-scripts build assets/js/gutenberg-block.js --output-path=build",
+      "build:start": "wp-scripts start assets/js/gutenberg-block.js --output-path=build"
     },
     "repository": {
       "type": "git",
