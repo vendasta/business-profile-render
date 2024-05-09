@@ -13,6 +13,52 @@ The hosting platform syncs the relevant business information to the WP Options t
 This plugin provides ways to automatically render this information on your site.
 
 This includes both [Shortcodes](https://codex.wordpress.org/Shortcode) and [Gutenberg Components](https://developer.wordpress.org/block-editor/reference-guides/components/).
+### Shortcodes
+
+#### How to use this shortcode
+
+To utilize this shortcode, follow the format below:
+
+**[business_profile attr="company_name"]**
+
+Here, the `attr` parameter specifies the attribute you want to display. Replace `"company_name"` with the desired attribute you wish to retrieve from the business profile.
+
+**For example:** if you want to display the company's name, you would use `"company_name"` as the attribute value. Similarly, you can replace it with other attributes such as address, phone number, or any other pertinent information stored in the business profile.
+
+Make sure to enclose the attribute name within double quotation marks (" "). This ensures that the shortcode accurately identifies the attribute you intend to retrieve.
+
+| Shortcode | Attribute | Preview |
+|--|--|--|
+|`[business_profile]`| company_name | ABC Media Pvt Ltd |
+|`[business_profile]`| description | |
+|`[business_profile]`| short_description |  |
+|`[business_profile]`| services_offered |  |
+|`[business_profile]`| contact_first_name |  |
+|`[business_profile]`| contact_last_name |  |
+|`[business_profile]`| contact_email |hello@abcmedia.com |
+|`[business_profile]`| cell_number |  |
+|`[business_profile]`| fax_number |  |
+|`[business_profile]`| toll_free_number |  |
+|`[business_profile]`| work_number | '+99 879 00 12 12' |
+|`[business_profile]`| address | 123 4th Street |
+|`[business_profile]`| city | Fairbanks |
+|`[business_profile]`| state | Alaska |
+|`[business_profile]`| country | United States |
+|`[business_profile]`| zip | 99654 |
+|`[business_profile]`| time_zone |  |
+|`[business_profile]`| longitude | -1.8769149 |
+|`[business_profile]`| latitude | 37.1418673 |
+|`[business_profile]`| hours_of_operation |  |
+|`[business_profile]`| rss_url |  |
+|`[business_profile]`| twitter_url |  |
+|`[business_profile]`| foursquare_url |  |
+|`[business_profile]`| facebook_url |  |
+|`[business_profile]`| youtube_url |  |
+|`[business_profile]`| instagram_url |  |
+|`[business_profile]`| pinterest_url |  |
+|`[business_profile]`| linkedin_url |  |
+|`[business_profile]`| tax_ids |  |
+
 
 ### Old Shortcodes
 
