@@ -87,3 +87,27 @@ Make sure to enclose the attribute name within double quotation marks (" "). Thi
 |`[business-profile-render-image-link-facebook-url]`||
 |`[business-profile-render-image-link-rss-url]`||
 |`[business-profile-render-image-link-youtube-url]`||
+
+## Developer Notes
+
+### Requirements
+| Tools | Documentation | Recomended Version |
+|--|--|--|
+| Node js | [Doc](https://nodejs.org/en/download/current) | 8.15.x |
+| NPM | [Doc](https://www.npmjs.com/package/download) | 16.17.x |
+| Composer | [Doc](https://getcomposer.org/download/) | 2.7.x |
+| Gulpjs | [Doc](https://gulpjs.com/docs/en/getting-started/quick-start/) | 4.0.x |
+| wp-cli | [Doc](https://make.wordpress.org/cli/handbook/guides/installing/) | Latest |
+
+### How to install in Local environment
+
+Before proceeding, ensure you have installed all the necessary tools mentioned above. Once done, follow the steps below:
+
+1. Clone the plugin from the [git repository](https://github.com/vendasta/business-profile-render/) to your WordPress plugin directory. This directory is typically located at /wp-content/plugins/.
+2. Replace `/wp-content/plugins/business-profile-render` with the correct path to your WordPress plugins directory if it differs.
+3. After cloning the repository, navigate to your WordPress admin dashboard.
+4. Go to the Plugins section.
+5. Locate the "Business Profile Render" plugin in the list.
+6. Click on the "Activate" link below the plugin name to activate it.
+
+Once activated, the plugin will be ready for use on your WordPress site.
