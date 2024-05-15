@@ -62,31 +62,33 @@ Make sure to enclose the attribute name within double quotation marks (" "). Thi
 
 ### Old Shortcodes
 
+Our "Business Profile Data" and "Business Profile Render" plugins use distinct shortcodes and operate on separate versions 1.2.0 and 1.5.0.
+
 | Shortcode | Description | Preview |
 |--|--|--|
-|`[business-profile-render-company-name]`| Company Name | ABC Media Pvt Ltd |
-|`[business-profile-render-full-address]`|Full Address|123, Sample Address, CA - 12345|
-|`[business-profile-render-address]`|Address|123, Sample Address
-|`[business-profile-render-city]`|City|Saskatoon
-|`[business-profile-render-state]`|State|Saskatchewan
-|`[business-profile-render-zip-code]`|ZIP Code|12345
-|`[business-profile-render-country]`|Country|Canada
-|`[business-profile-render-work-number]`|Work Number|8877665544
-|`[business-profile-render-toll-free-number]`|Toll Free Number|1800-000-000
-|`[business-profile-render-hours-of-operation]`|Working Hours|
-|`[business-profile-render-company-description]`|Description|
-|`[business-profile-render-company-short-description]`|Short Description|
-|`[business-profile-render-primary]`|Primary|
-|`[business-profile-render-logo]`|Logo|
-|`[business-profile-render-services]`|Services|
-|`[business-profile-render-image-link-foursquare-url]`||
-|`[business-profile-render-image-link-twitter-url]`||
-|`[business-profile-render-image-link-instagram-url]`||
-|`[business-profile-render-image-link-linkedin-url]`||
-|`[business-profile-render-image-link-pinterest-url]`||
-|`[business-profile-render-image-link-facebook-url]`||
-|`[business-profile-render-image-link-rss-url]`||
-|`[business-profile-render-image-link-youtube-url]`||
+|`[business-profile-render-company-name] & [business-profile-data-company-name]`| Company Name | ABC Media Pvt Ltd |
+|`[business-profile-render-full-address] & [business-profile-data-full-address]`|Full Address|123, Sample Address, CA - 12345|
+|`[business-profile-render-address] & [business-profile-data-address]`|Address|123, Sample Address
+|`[business-profile-render-city] & [business-profile-data-city]`|City|Saskatoon
+|`[business-profile-render-state] & [business-profile-data-state]`|State|Saskatchewan
+|`[business-profile-render-zip-code] & [business-profile-data-zip-code]`|ZIP Code|12345
+|`[business-profile-render-country] & [business-profile-data-country]`|Country|Canada
+|`[business-profile-render-work-number] & [business-profile-data-work-number]`|Work Number|8877665544
+|`[business-profile-render-toll-free-number] & [business-profile-data-toll-free-number]`|Toll Free Number|1800-000-000
+|`[business-profile-render-hours-of-operation] & [business-profile-data-hours-of-operation]`|Working Hours|
+|`[business-profile-render-company-description] & [business-profile-data-company-description]`|Description|
+|`[business-profile-render-company-short-description] & [business-profile-data-company-short-description]`|Short Description|
+|`[business-profile-render-primary] & [business-profile-data-primary]`|Primary|
+|`[business-profile-render-logo] & [business-profile-data-logo]`|Logo|
+|`[business-profile-render-services] & [business-profile-data-services]`|Services|
+|`[business-profile-render-image-link-foursquare-url] & [business-profile-data-image-link-foursquare-url]`|| Foursquare Link
+|`[business-profile-render-image-link-twitter-url] & [business-profile-data-image-link-twitter-url]`|| Twitter Link
+|`[business-profile-render-image-link-instagram-url] & [business-profile-data-image-link-instagram-url]`|| Instagram Link
+|`[business-profile-render-image-link-linkedin-url] & [business-profile-data-image-link-linkedin-url]`|| LinkedeIn Link
+|`[business-profile-render-image-link-pinterest-url] & [business-profile-data-image-link-pinterest-url]`|| Pinterest Link
+|`[business-profile-render-image-link-facebook-url] & [business-profile-data-image-link-facebook-url]`|| Facebook Link
+|`[business-profile-render-image-link-rss-url] & [business-profile-data-image-link-rss-url]`|| RSS Link
+|`[business-profile-render-image-link-youtube-url] & [business-profile-data-image-link-youtube-url]`|| Youtube Link
 
 ## Developer Notes
 
