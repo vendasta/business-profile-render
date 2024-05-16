@@ -1,0 +1,63 @@
+.bpr_shortcode_lable input {
+    width: 90%;
+}
+button.bpr_btncpy {
+    position: relative;
+    left: -38px;
+}
+.bpr_copy-text input.bpr_text {
+    padding: 10px;
+    font-size: 18px;
+    color: #555;
+    border: none;
+    outline: none;
+}
+.bpr_copy-text button {
+    padding: 6px;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.form-table{
+    width: 90%;
+}
+.bpr_preview_lable {
+    font-size: 18px;
+    color: #555;
+}
+.bpr_shortcode_title {
+    font-size: 22px;
+    margin-left: 18px;
+}
+.bpr_preview_title{
+    font-size: 22px;
+}
+.bpr_text{
+    position: relative;
+}
+.tooltip {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 5px 10px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 12px;
+    left: 22%;
+    right: 68%;
+    transform: translateY(10%);
+}
+.bpr_shortcode_lable .tooltip:after {
+    border-left: solid transparent 10px;
+    border-right: solid transparent 10px;
+    border-top: solid #515151 10px;
+    content: " ";
+    top: -9px;
+    left: 38%;
+    right: 62%;
+    width: 0;
+    transform: rotate(0.5turn);
+    position: absolute;
+    }
