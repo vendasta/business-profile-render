@@ -58,26 +58,15 @@ class Page
 
     public static function render_admin_page()
     {
-        // Retrieve serialized data from the database
-        global $wpdb;
-        $option_name = "bpr_business_profile"; // Replace with your option name
-        $serialized_data = $wpdb->get_var(
-            $wpdb->prepare(
-                "SELECT option_value FROM {$wpdb->prefix}options WHERE option_name = %s",
-                $option_name
-            )
-        );
+    $option_name = "bpr_business_profile";
+    $unserialized_data = get_option($option_name);
 
-        // Unserialize the data
-        $unserialized_data = maybe_unserialize($serialized_data);
-
-        // Parse JSON data
-        if ($unserialized_data) {
-            $json_data = json_encode($unserialized_data);
-            $decoded_data = json_decode($json_data, true);
-        } else {
-            $decoded_data = [];
-        }
+    if ($unserialized_data) {
+        $json_data = json_encode($unserialized_data);
+        $decoded_data = json_decode($json_data, true);
+    } else {
+        $decoded_data = [];
+    }
 
         // Generate HTML based on the JSON data
         $html = '<div class="bpr_wrap">';

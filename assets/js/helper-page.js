@@ -3,13 +3,13 @@ document.addEventListener("DOMContentLoaded", function () {
     copyButtons.forEach(function(copyButton) {
         copyButton.addEventListener("mouseenter", function () {
             let tooltip = document.createElement("div");
-            tooltip.classList.add("tooltip");
+            tooltip.classList.add("bpr_tooltip");
             tooltip.innerText = "Click to copy";
             this.parentElement.appendChild(tooltip);
         });
 
         copyButton.addEventListener("mouseleave", function () {
-            let tooltip = this.parentElement.querySelector(".tooltip");
+            let tooltip = this.parentElement.querySelector(".bpr_tooltip");
             if (tooltip) {
                 tooltip.parentElement.removeChild(tooltip);
             }
