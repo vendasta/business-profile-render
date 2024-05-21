@@ -342,7 +342,7 @@ class Deprecated {
     public static function business_profile_data_image_link_linkedin_url() {
         $json_data = get_option('bpr_business_profile');
         $linkedin_img = self::get_data_bpr('linkedin_url');
-        $linkedin_url = "../wp-content/plugins/business-profile-render/public/images/linkedin.svg";
+        $linkedin_url = "../wp-content/plugins/business-profile-render/assets/images/linkedin.svg";
         $linkedin ="<a href='$linkedin_img' rel='nofollow'><img src='$linkedin_url' alt='link to LinkedIn URL' style='height:32px;width:32px;''></a>";
         if (empty($linkedin_img)) {
             return "<a href='' rel='nofollow'><img src='$linkedin_url' alt='link to LinkedIn URL' style='height:32px;width:32px;''></a>";
@@ -353,7 +353,7 @@ class Deprecated {
     public static function business_profile_render_image_link_linkedin_url() {
         $json_data = get_option('bpr_business_profile');
         $linkedin_img = self::get_data_bpr('linkedin_url');
-        $linkedin_url = "../wp-content/plugins/business-profile-render/public/images/linkedin.svg";
+        $linkedin_url = "../wp-content/plugins/business-profile-render/assets/images/linkedin.svg";
         $linkedin ="<a href='$linkedin_img' rel='nofollow'><img src='$linkedin_url' alt='link to LinkedIn URL' style='height:32px;width:32px;''></a>";
         if (empty($linkedin_img)) {
             return "<a href='' rel='nofollow'><img src='$linkedin_url' alt='link to LinkedIn URL' style='height:32px;width:32px;''></a>";
@@ -372,7 +372,7 @@ class Deprecated {
     public static function business_profile_data_image_link_rss_url() {
         $json_data = get_option('bpr_business_profile');
         $rss_img = self::get_data_bpr('rss_url');
-        $rss_url = "../wp-content/plugins/business-profile-render/public/images/rss.svg";
+        $rss_url = "../wp-content/plugins/business-profile-render/assets/images/rss.svg";
         $rss ="<a href='$rss_img' rel='nofollow'><img src='$rss_url' alt='link to RSS URL' style='height:32px;width:32px;''></a>";
         if (empty($rss_img)) {
             return "<a href='' rel='nofollow'><img src='$rss_url' alt='link to RSS URL' style='height:32px;width:32px;''></a>";
@@ -383,7 +383,7 @@ class Deprecated {
     public static function business_profile_render_image_link_rss_url() {
         $json_data = get_option('bpr_business_profile');
         $rss_img = self::get_data_bpr('rss_url');
-        $rss_url = "../wp-content/plugins/business-profile-render/public/images/rss.svg";
+        $rss_url = "../wp-content/plugins/business-profile-render/assets/images/rss.svg";
         $rss ="<a href='$rss_img' rel='nofollow'><img src='$rss_url' alt='link to RSS URL' style='height:32px;width:32px;''></a>";
         if (empty($rss_img)) {
             return "<a href='' rel='nofollow'><img src='$rss_url' alt='link to RSS URL' style='height:32px;width:32px;''></a>";
@@ -404,7 +404,7 @@ class Deprecated {
     public static function business_profile_data_image_link_facebook_url() {
         $json_data = get_option('bpr_business_profile');
         $facebook_img = self::get_data_bpr('facebook_url');
-        $facebook_url = "../wp-content/plugins/business-profile-render/public/images/facebook.svg";
+        $facebook_url = "../wp-content/plugins/business-profile-render/assets/images/facebook.svg";
         $facebook ="<a href='$facebook_img' rel='nofollow'><img src='$facebook_url' alt='link to Facebook URL' style='height:32px;width:32px;''></a>";
         if (empty($facebook_img)) {
             return "<a href='' rel='nofollow'><img src='$facebook_url' alt='link to Facebook URL' style='height:32px;width:32px;''></a>";
@@ -415,7 +415,7 @@ class Deprecated {
     public static function business_profile_render_image_link_facebook_url() {
         $json_data = get_option('bpr_business_profile');
         $facebook_img = self::get_data_bpr('facebook_url');
-        $facebook_url = "../wp-content/plugins/business-profile-render/public/images/facebook.svg";
+        $facebook_url = "../wp-content/plugins/business-profile-render/assets/images/facebook.svg";
         $facebook ="<a href='$facebook_img' rel='nofollow'><img src='$facebook_url' alt='link to Facebook URL' style='height:32px;width:32px;''></a>";
         if (empty($facebook_img)) {
             return "<a href='' rel='nofollow'><img src='$facebook_url' alt='link to Facebook URL' style='height:32px;width:32px;''></a>";
@@ -434,7 +434,7 @@ class Deprecated {
     public static function business_profile_data_image_link_twitter_url() {
         $json_data = get_option('bpr_business_profile');
         $twitter_img = self::get_data_bpr('twitter_url');
-        $twitter_url = "../wp-content/plugins/business-profile-render/public/images/twitter.svg";
+        $twitter_url = "../wp-content/plugins/business-profile-render/assets/images/twitter.svg";
         $twitter ="<a href='$twitter_img' rel='nofollow'><img src='$twitter_url' alt='link to Twitter URL' style='height:32px;width:32px;''></a>";
         if (empty($twitter_img)) {
             return "<a href='' rel='nofollow'><img src='$twitter_url' alt='link to Twitter URL' style='height:32px;width:32px;''></a>";
@@ -445,7 +445,7 @@ class Deprecated {
     public static function business_profile_render_image_link_twitter_url() {
         $json_data = get_option('bpr_business_profile');
         $twitter_img = self::get_data_bpr('twitter_url');
-        $twitter_url = "../wp-content/plugins/business-profile-render/public/images/twitter.svg";
+        $twitter_url = "../wp-content/plugins/business-profile-render/assets/images/twitter.svg";
         $twitter ="<a href='$twitter_img' rel='nofollow'><img src='$twitter_url' alt='link to Twitter URL' style='height:32px;width:32px;''></a>";
         if (empty($twitter_img)) {
             return "<a href='' rel='nofollow'><img src='$twitter_url' alt='link to Twitter URL' style='height:32px;width:32px;''></a>";
@@ -464,7 +464,7 @@ class Deprecated {
     public static function business_profile_data_image_link_youtube_url() {
         $json_data = get_option('bpr_business_profile');
         $youtube_img = self::get_data_bpr('youtube_url');
-        $youtube_url = "../wp-content/plugins/business-profile-render/public/images/youtube.svg";
+        $youtube_url = "../wp-content/plugins/business-profile-render/assets/images/youtube.svg";
         $youtube ="<a href='$youtube_img' rel='nofollow'><img src='$youtube_url' alt='link to Youtube URL' style='height:32px;width:32px;''></a>";
         if (empty($youtube_img)) {
             return "<a href='' rel='nofollow'><img src='$youtube_url' alt='link to Youtube URL' style='height:32px;width:32px;''></a>";
@@ -475,7 +475,7 @@ class Deprecated {
     public static function business_profile_render_image_link_youtube_url() {
         $json_data = get_option('bpr_business_profile');
         $youtube_img = self::get_data_bpr('youtube_url');
-        $youtube_url = "../wp-content/plugins/business-profile-render/public/images/youtube.svg";
+        $youtube_url = "../wp-content/plugins/business-profile-render/assets/images/youtube.svg";
         $youtube ="<a href='$youtube_img' rel='nofollow'><img src='$youtube_url' alt='link to Youtube URL' style='height:32px;width:32px;''></a>";
         if (empty($youtube_img)) {
             return "<a href='' rel='nofollow'><img src='$youtube_url' alt='link to Youtube URL' style='height:32px;width:32px;''></a>";
@@ -494,7 +494,7 @@ class Deprecated {
     public static function business_profile_data_image_link_foursquare_url() {
         $json_data = get_option('bpr_business_profile');
         $foursquare_img = self::get_data_bpr('foursquare_url');
-        $foursquare_url = "../wp-content/plugins/business-profile-render/public/images/foursquare.svg";
+        $foursquare_url = "../wp-content/plugins/business-profile-render/assets/images/foursquare.svg";
         $foursquare ="<a href='$foursquare_img' rel='nofollow'><img src='$foursquare_url' alt='link to Foursquare URL' style='height:32px;width:32px;''></a>";
         if (empty($foursquare_img)) {
             return "<a href='' rel='nofollow'><img src='$foursquare_url' alt='link to Foursquare URL' style='height:32px;width:32px;''></a>";
@@ -505,7 +505,7 @@ class Deprecated {
     public static function business_profile_render_image_link_foursquare_url() {
         $json_data = get_option('bpr_business_profile');
         $foursquare_img = self::get_data_bpr('foursquare_url');
-        $foursquare_url = "../wp-content/plugins/business-profile-render/public/images/foursquare.svg";
+        $foursquare_url = "../wp-content/plugins/business-profile-render/assets/images/foursquare.svg";
         $foursquare ="<a href='$foursquare_img' rel='nofollow'><img src='$foursquare_url' alt='link to Foursquare URL' style='height:32px;width:32px;''></a>";
         if (empty($foursquare_img)) {
             return "<a href='' rel='nofollow'><img src='$foursquare_url' alt='link to Foursquare URL' style='height:32px;width:32px;''></a>";
@@ -525,7 +525,7 @@ class Deprecated {
     public static function business_profile_data_image_link_instagram_url() {
         $json_data = get_option('bpr_business_profile');
         $instagram_img = self::get_data_bpr('instagram_url');
-        $instagram_url = "../wp-content/plugins/business-profile-render/public/images/instagram.svg";
+        $instagram_url = "../wp-content/plugins/business-profile-render/assets/images/instagram.svg";
         $instagram ="<a href='$instagram_img' rel='nofollow'><img src='$instagram_url' alt='link to Instagram URL' style='height:32px;width:32px;''></a>";
         if (empty($instagram_img)) {
             return "<a href='' rel='nofollow'><img src='$instagram_url' alt='link to Instagram URL' style='height:32px;width:32px;''></a>";
@@ -536,7 +536,7 @@ class Deprecated {
     public static function business_profile_render_image_link_instagram_url() {
         $json_data = get_option('bpr_business_profile');
         $instagram_img = self::get_data_bpr('instagram_url');
-        $instagram_url = "../wp-content/plugins/business-profile-render/public/images/instagram.svg";
+        $instagram_url = "../wp-content/plugins/business-profile-render/assets/images/instagram.svg";
         $instagram ="<a href='$instagram_img' rel='nofollow'><img src='$instagram_url' alt='link to Instagram URL' style='height:32px;width:32px;''></a>";
         if (empty($instagram_img)) {
             return "<a href='' rel='nofollow'><img src='$instagram_url' alt='link to Instagram URL' style='height:32px;width:32px;''></a>";
@@ -555,7 +555,7 @@ class Deprecated {
     public static function business_profile_data_image_link_pinterest_url() {
         $json_data = get_option('bpr_business_profile');
         $pinterest_img = self::get_data_bpr('pinterest_url');
-        $pinterest_url = "../wp-content/plugins/business-profile-render/public/images/pinterest.svg";
+        $pinterest_url = "../wp-content/plugins/business-profile-render/assets/images/pinterest.svg";
         $pinterest ="<a href='$pinterest_img' rel='nofollow'><img src='$pinterest_url' alt='link to Pinterest URL' style='height:32px;width:32px;''></a>";
         if (empty($pinterest_img)) {
             return "<a href='' rel='nofollow'><img src='$pinterest_url' alt='link to Pinterest URL' style='height:32px;width:32px;''></a>";
@@ -566,7 +566,7 @@ class Deprecated {
     public static function business_profile_render_image_link_pinterest_url() {
         $json_data = get_option('bpr_business_profile');
         $pinterest_img = self::get_data_bpr('pinterest_url');
-        $pinterest_url = "../wp-content/plugins/business-profile-render/public/images/pinterest.svg";
+        $pinterest_url = "../wp-content/plugins/business-profile-render/assets/images/pinterest.svg";
         $pinterest ="<a href='$pinterest_img' rel='nofollow'><img src='$pinterest_url' alt='link to Pinterest URL' style='height:32px;width:32px;''></a>";
         if (empty($pinterest_img)) {
             return "<a href='' rel='nofollow'><img src='$pinterest_url' alt='link to Pinterest URL' style='height:32px;width:32px;''></a>";
