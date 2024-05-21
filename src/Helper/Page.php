@@ -12,10 +12,10 @@ class Page
      */
     public static function init()
     {
-        add_action("admin_menu", [__CLASS__, "add_admin_page"]);
-        add_action("init", [__CLASS__, "add_action_wp_enqueue_styles"]);
-        add_action("init", [__CLASS__, "add_action_wp_enqueue_scripts"]);
-        add_action("init", [__CLASS__, "add_font_awesome"]);
+        add_action("admin_menu", array( __CLASS__, "add_admin_page" ));
+        add_action("init", array( __CLASS__, "add_action_wp_enqueue_styles" ));
+        add_action("init", array( __CLASS__, "add_action_wp_enqueue_scripts" ));
+        add_action("init", array( __CLASS__, "add_font_awesome" ));
     }
 
     public static function add_action_wp_enqueue_styles()
@@ -48,12 +48,13 @@ class Page
     public static function add_admin_page()
     {
         add_options_page(
-            "Business Profile Render", // Page title
-            "Business Profile Render", // Menu title
+            __("Business Profile Render", "business-profile-render"), // Page title
+            __("Business Profile Render", "business-profile-render"), // Menu title
             "manage_options", // Capability required to access the page
             "page-settings", // Menu slug
             [__CLASS__, "render_admin_page"] // Callback function to render the page
         );
+        
     }
 
     public static function render_admin_page()
@@ -70,7 +71,7 @@ class Page
 
         // Generate HTML based on the JSON data
         $html = '<div class="bpr_wrap">';
-        $html .= "<h1>Business Profile Settings</h1>";
+        $html .= "<h1>". __("Business Profile Settings", "business-profile-render"). "</h1>";
         if (!empty($decoded_data)) {
             $html .= '<table class="form-table">';
             $html .= "<tr>";
@@ -101,7 +102,7 @@ class Page
             }
             $html .= "</table>";
         } else {
-            $html .= "<p>No data found.</p>";
+            $html .= "<p>" .__( "No data found.", "business-profile-render"). "</p>";
         }
 
         $html .= "</div>";
