@@ -6,7 +6,7 @@
 namespace BusinessProfileRender\Updater;
 
 class Updater {
-    const GITHUB_ORGANIZATION = 'rajanvijayan';
+    const GITHUB_ORGANIZATION = 'vendasta';
     const GITHUB_REPOSITORY = 'business-profile-render';
 
     // Loads the updater.
