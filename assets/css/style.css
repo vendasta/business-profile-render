@@ -11,6 +11,7 @@ button.bpr_btncpy {
     color: #555;
     border: none;
     outline: none;
+    background-color: #fff;
 }
 .bpr_copy-text button {
     padding: 6px;
