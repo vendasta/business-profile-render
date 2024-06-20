@@ -108,7 +108,7 @@ class ShortCode
     public static function get_icon_from_fontawesome($icon)
     {
         $icon_prefix = self::get_social_media($icon);
-        return "<i class='fab fa-$icon-square'></i>";
+        return "<i class='fab fa-$icon'></i>";
     }
 
     public static function render_images_logo($json_data)
