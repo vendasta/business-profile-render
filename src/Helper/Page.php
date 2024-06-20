@@ -96,12 +96,7 @@ class Page
                     esc_attr("[business_profile attr='$key']") .
                     '"/><button class="bpr_btncpy"><i class="fas fa-copy"></i></button></td>';
                 $html .=
-                    '<td><div class="bpr_preview_lable">' .
-                    (empty($value)
-                        ? "No value"
-                        : esc_html(
-                            is_array($value) ? implode(", ", $value) : $value
-                        )) .
+                    '<td><div class="bpr_preview_lable">' . do_shortcode( '[business_profile attr="'.$key.'"]') .
                     "</div></td>";
                 $html .= "</tr>";
             }
