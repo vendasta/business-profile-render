@@ -1,3 +1,17 @@
+# Folders #
+######################
+/dist/
+/docs/
+/node_modules/
+/vendor/
+/build/
+
+# OS generated files #
+######################
 .DS_Store
-.idea
-.vscode
+.DS_Store?
+._*
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db

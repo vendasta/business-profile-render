@@ -1,0 +1,23 @@
+{
+    "name": "business-profile-render",
+    "version": "1.5.0",
+    "description": "Tool to provide utilities for displaying synchronized business profile data",
+    "main": "assets/js/gutenberg-block.js",
+    "scripts": {
+        "build:scripts": "npx wp-scripts build assets/js/gutenberg-block.js --output-path=build",
+        "build:start": "npx wp-scripts start assets/js/gutenberg-block.js --output-path=build"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/vendasta/business-profile-render.git"
+    },
+    "author": "Website Pro Team",
+    "license": "GPL-2.0-or-later",
+    "devDependencies": {
+        "@wordpress/scripts": "27.2.0",
+        "ajv": "^8.16.0",
+        "gulp": "^4.0.2",
+        "gulp-notify": "^4.0.0",
+        "gulp-wp-pot": "^2.5.0"
+    }
+}
