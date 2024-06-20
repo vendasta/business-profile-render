@@ -92,7 +92,7 @@ class Page
             foreach ($decoded_data as $key => $value) {
                 $html .= '<tr class="bpr_copy-text">';
                 $html .=
-                    '<td><div class="bpr_shortcode_lable"><input type="text" class="bpr_text" value="' .
+                    '<td><div class="bpr_shortcode_lable"><input type="text" readonly class="bpr_text" value="' .
                     esc_attr("[business_profile attr='$key']") .
                     '"/><button class="bpr_btncpy"><i class="fas fa-copy"></i></button></td>';
                 $html .=
