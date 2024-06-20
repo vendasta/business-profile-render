@@ -8,14 +8,8 @@ class ShortCode
 {
     public static function init()
     {   
-        add_action( 'wp_enqueue_scripts', array(
-            __CLASS__,
-            'add_font_awesome',
-        ));
-        add_shortcode("business_profile", array(
-            __CLASS__,
-            "render_business_profile",
-        ));
+        add_action( 'wp_enqueue_scripts', array( __CLASS__, 'add_font_awesome' ));
+        add_shortcode("business_profile", array( __CLASS__, "render_business_profile" ));
     }
 
     public static function add_font_awesome()

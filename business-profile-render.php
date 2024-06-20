@@ -13,9 +13,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 define( 'BUSINESS_PROFILE_RENDER_OPTION', 'bpr_business_profile' );
 define( 'BUSINESS_PROFILE_RENDER_DEFAULT_OPTION', 'company_name' );
+define( 'BUSINESS_PROFILE_RENDER_FILE', __FILE__ );
 
 // Load Composer autoloader
 require_once __DIR__ . '/vendor/autoload.php'; 
+
+// Include the Updater class
+require_once plugin_dir_path( __FILE__ ) . 'src/Update/Updater.php';
 
 // Include necessary files
 require_once plugin_dir_path( __FILE__ ) . 'src/Admin/AdminNotice.php';
