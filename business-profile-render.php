@@ -2,7 +2,7 @@
 /*
 Plugin Name: Business Profile Render
 Description: Tool to provide utilities for displaying synchronized business profile data
-Version: 1.5.0
+Version: 1.5.1
 Author: Website Pro Team
 License: GPL v2 or later
 */
