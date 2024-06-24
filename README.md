@@ -63,7 +63,7 @@ Make sure to enclose the attribute name within double quotation marks (" "). Thi
 
 ### Old Shortcodes
 
-Our "Business Profile Data" and "Business Profile Render" plugins use distinct shortcodes and operate on separate versions 1.2.0 and 1.5.0.
+Our "Business Profile Data" and "Business Profile Render" plugins use distinct shortcodes and operate on separate versions 1.2.0 and 1.5.x.
 
 | Shortcode | Description | Preview |
 |--|--|--|
