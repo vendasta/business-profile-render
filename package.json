@@ -1,6 +1,6 @@
 {
     "name": "business-profile-render",
-    "version": "1.5.1",
+    "version": "1.5.2",
     "description": "Tool to provide utilities for displaying synchronized business profile data",
     "main": "assets/js/gutenberg-block.js",
     "scripts": {
