@@ -25,7 +25,6 @@
 
             const isImageUrl = (url) => {
                 try {
-                    // Remove trailing commas before parsing the URL
                     const cleanUrl = url.replace(/,+$/, '');
                     const parsedUrl = new URL(cleanUrl);
                     return parsedUrl.hostname === 'media-prod.apigateway.co';
@@ -35,29 +34,33 @@
             };
 
             const getSocialIcon = (url) => {
+                let hostname;
                 try {
                     const parsedUrl = new URL(url);
-                    if (parsedUrl.hostname.includes("facebook.com")) {
-                        return "fab fa-facebook";
-                    } else if (parsedUrl.hostname.includes("rss")) {
-                        return "fab fa-rss";
-                    } else if (parsedUrl.hostname.includes("twitter.com")) {
-                        return "fab fa-twitter";
-                    } else if (parsedUrl.hostname.includes("youtube.com")) {
-                        return "fab fa-youtube";
-                    } else if (parsedUrl.hostname.includes("foursquare.com")) {
-                        return "fab fa-foursquare";
-                    } else if (parsedUrl.hostname.includes("instagram.com")) {
-                        return "fab fa-instagram";
-                    } else if (parsedUrl.hostname.includes("pinterest.com")) {
-                        return "fab fa-pinterest";
-                    } else if (parsedUrl.hostname.includes("linkedin.com")) {
-                        return "fab fa-linkedin";
-                    } else {
-                        return null;
-                    }
+                    hostname = parsedUrl.hostname;
                 } catch (_) {
                     return null;
+                }
+
+                switch (true) {
+                    case hostname.includes("facebook.com"):
+                        return "fab fa-facebook";
+                    case hostname.includes("rss"):
+                        return "fab fa-rss";
+                    case hostname.includes("twitter.com"):
+                        return "fab fa-twitter";
+                    case hostname.includes("youtube.com"):
+                        return "fab fa-youtube";
+                    case hostname.includes("foursquare.com"):
+                        return "fab fa-foursquare";
+                    case hostname.includes("instagram.com"):
+                        return "fab fa-instagram";
+                    case hostname.includes("pinterest.com"):
+                        return "fab fa-pinterest";
+                    case hostname.includes("linkedin.com"):
+                        return "fab fa-linkedin";
+                    default:
+                        return null;
                 }
             };
 
@@ -96,7 +99,6 @@
 
             const isImageUrl = (url) => {
                 try {
-                    // Remove trailing commas before parsing the URL
                     const cleanUrl = url.replace(/,+$/, '');
                     const parsedUrl = new URL(cleanUrl);
                     return parsedUrl.hostname === 'media-prod.apigateway.co';
@@ -106,29 +108,33 @@
             };
 
             const getSocialIcon = (url) => {
+                let hostname;
                 try {
                     const parsedUrl = new URL(url);
-                    if (parsedUrl.hostname.includes("facebook.com")) {
-                        return "fab fa-facebook";
-                    } else if (parsedUrl.hostname.includes("rss")) {
-                        return "fab fa-rss";
-                    } else if (parsedUrl.hostname.includes("twitter.com")) {
-                        return "fab fa-twitter";
-                    } else if (parsedUrl.hostname.includes("youtube.com")) {
-                        return "fab fa-youtube";
-                    } else if (parsedUrl.hostname.includes("foursquare.com")) {
-                        return "fab fa-foursquare";
-                    } else if (parsedUrl.hostname.includes("instagram.com")) {
-                        return "fab fa-instagram";
-                    } else if (parsedUrl.hostname.includes("pinterest.com")) {
-                        return "fab fa-pinterest";
-                    } else if (parsedUrl.hostname.includes("linkedin.com")) {
-                        return "fab fa-linkedin";
-                    } else {
-                        return null;
-                    }
+                    hostname = parsedUrl.hostname;
                 } catch (_) {
                     return null;
+                }
+
+                switch (true) {
+                    case hostname.includes("facebook.com"):
+                        return "fab fa-facebook";
+                    case hostname.includes("rss"):
+                        return "fab fa-rss";
+                    case hostname.includes("twitter.com"):
+                        return "fab fa-twitter";
+                    case hostname.includes("youtube.com"):
+                        return "fab fa-youtube";
+                    case hostname.includes("foursquare.com"):
+                        return "fab fa-foursquare";
+                    case hostname.includes("instagram.com"):
+                        return "fab fa-instagram";
+                    case hostname.includes("pinterest.com"):
+                        return "fab fa-pinterest";
+                    case hostname.includes("linkedin.com"):
+                        return "fab fa-linkedin";
+                    default:
+                        return null;
                 }
             };
 
