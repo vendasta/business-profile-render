@@ -29,17 +29,12 @@ class ShortCode
         // Get the attribute value from shortcode or use default 'company_name'
         $attr = isset($attr["attr"]) ? $attr["attr"] : BUSINESS_PROFILE_RENDER_DEFAULT_OPTION;
 
-        // Special case for 'full_address'
+        // Special cases for 'full_address' and 'images'
         if ($attr === 'full_address') {
             return self::render_full_address($json_data);
-        }
-
-        // Special case for 'images'
-        if ($attr === 'images') {
+        } elseif ($attr === 'images') {
             return self::render_images_logo($json_data);
-        }
-
-        if (!array_key_exists($attr, $json_data)) {
+        } elseif (!array_key_exists($attr, $json_data)) {
             return __("Attribute not found", "business-profile-render");
         }
 
@@ -52,8 +47,9 @@ class ShortCode
             $social_media = self::get_social_media($attr);
             if ($social_media) {
                 return "<a href='" . $json_data[$attr] . "' target='_blank'>" . self::get_icon_from_fontawesome($social_media) . "</a>";
+            } else {
+                return "<a href='" . $json_data[$attr] . "' target='_blank'>" . $json_data[$attr] . "</a>";
             }
-            return __("Invalid URL", "business-profile-render");
         }
 
         // Retrieve the value corresponding to the attribute from parsed JSON data
