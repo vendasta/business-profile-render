@@ -7,9 +7,9 @@ namespace BusinessProfileRender\ShortCode;
 class ShortCode
 {
     public static function init()
-    {   
-        add_action( 'wp_enqueue_scripts', array( __CLASS__, 'add_font_awesome' ));
-        add_shortcode("business_profile", array( __CLASS__, "render_business_profile" ));
+    {
+        add_action('wp_enqueue_scripts', array(__CLASS__, 'add_font_awesome'));
+        add_shortcode("business_profile", array(__CLASS__, "render_business_profile"));
     }
 
     public static function add_font_awesome()
@@ -29,21 +29,14 @@ class ShortCode
         // Get the attribute value from shortcode or use default 'company_name'
         $attr = isset($attr["attr"]) ? $attr["attr"] : BUSINESS_PROFILE_RENDER_DEFAULT_OPTION;
 
-
-        if (!array_key_exists($attr, $json_data)) {
-            return __("Attribute not found", "business-profile-render");
-        }
-
-        // Special case for 'full_address'
+        // Special cases for 'full_address' and 'images'
         if ($attr === 'full_address') {
             return self::render_full_address($json_data);
-        }
-
-        // Special case for 'full_address'
-        if ($attr === 'images') {
+        } elseif ($attr === 'images') {
             return self::render_images_logo($json_data);
+        } elseif (!array_key_exists($attr, $json_data)) {
+            return __("Attribute not found", "business-profile-render");
         }
-
 
         // Check if the attribute value is an array
         if (is_array($json_data[$attr])) {
@@ -53,9 +46,10 @@ class ShortCode
         if (self::is_valid_url($json_data[$attr])) {
             $social_media = self::get_social_media($attr);
             if ($social_media) {
-                return "<a href='" . $json_data[$attr] . "' target='blank'>" . self::get_icon_from_fontawesome($social_media) . "</a>";
+                return "<a href='" . $json_data[$attr] . "' target='_blank'>" . self::get_icon_from_fontawesome($social_media) . "</a>";
+            } else {
+                return "<a href='" . $json_data[$attr] . "' target='_blank'>" . $json_data[$attr] . "</a>";
             }
-            return __("Invalid URL", "business-profile-render");
         }
 
         // Retrieve the value corresponding to the attribute from parsed JSON data
@@ -107,13 +101,11 @@ class ShortCode
 
     public static function get_icon_from_fontawesome($icon)
     {
-        $icon_prefix = self::get_social_media($icon);
         return "<i class='fab fa-$icon'></i>";
     }
 
     public static function render_images_logo($json_data)
     {
-
         $images = $json_data['images'];
         $html = "<img src='" . $images['logo'] . "' alt='logo' style='width: 100px; height: 100px;'>";
         return $html;

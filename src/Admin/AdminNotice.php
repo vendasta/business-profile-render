@@ -25,7 +25,7 @@ class AdminNotice {
     public static function display_contact_notice() {
         ?>
         <div class="notice notice-error">
-            <p><?php _e( 'Please contact Website pro team', 'business-profile-render' ); ?></p>
+            <p><?php _e( 'No data was found for your account. Please contact the Website Pro team.', 'business-profile-render' ); ?></p>
         </div>
         <?php
     }
